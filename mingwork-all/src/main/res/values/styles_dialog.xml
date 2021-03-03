@@ -1,0 +1,42 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="AppDialogStyle">
+        <item name="android:windowBackground">@android:color/transparent</item><!--背景设置透明-->
+        <item name="android:windowNoTitle">true</item><!--是否有title-->
+        <item name="android:windowFrame">@null</item><!--提示框是否有边框-->
+        <item name="android:windowIsFloating">true</item><!--提示框是否为浮动在页面之上-->
+        <item name="android:windowIsTranslucent">true</item><!--提示框是否为透明-->
+        <item name="android:windowContentOverlay">@null</item><!--遮盖样式，刚启动页面时的空白页黑屏页就是遮盖-->
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item><!--设置动画样式-->
+        <item name="android:backgroundDimEnabled">false</item><!--是否使用黑色可调节透明样式-->
+    </style>
+
+    <style name="AppleDialogStyle">
+        <item name="android:windowBackground">@android:color/transparent</item><!--背景设置透明-->
+        <item name="android:windowNoTitle">true</item><!--是否有title-->
+        <item name="android:windowFrame">@null</item><!--提示框是否有边框-->
+        <item name="android:windowIsFloating">true</item><!--提示框是否为浮动在页面之上-->
+        <item name="android:windowIsTranslucent">true</item><!--提示框是否为透明-->
+        <item name="android:windowContentOverlay">@null</item><!--遮盖样式，刚启动页面时的空白页黑屏页就是遮盖-->
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item><!--设置动画样式-->
+        <item name="android:backgroundDimEnabled">false</item><!--是否使用黑色可调节透明样式-->
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <!-- my loading dialog -->
+    <style name="LoadingDialogStyle">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowIsTranslucent">false</item><!--半透明-->
+        <item name="android:backgroundDimEnabled">false</item><!--模糊-->
+    </style>
+    <style name="LoadingDialogAnimStyle">
+        <item name="android:windowShowAnimation">@anim/in_fade</item>
+        <!-- 指定显示的动画xml  -->
+        <item name="android:windowHideAnimation">@anim/out_fade</item>
+        <!-- 指定消失的动画xml  -->
+    </style>
+</resources>

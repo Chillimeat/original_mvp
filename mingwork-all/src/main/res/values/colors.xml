@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--    黑白灰-->
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="grey">#808080 </color>
+
+    <!--    红橙黄绿蓝靛紫-->
+    <color name="red">#FF0000</color>
+    <color name="orange">#FF7D00</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="green">#00FF00</color>
+    <color name="blue">#0000FF</color>
+    <color name="indigo">#00FFFF</color>
+    <color name="purple">#FF00FF</color>
+
+<!--    常用-->
+    <color name="line">#F3F3F3</color>
+    <color name="background">#F4F5F9</color>
+    <color name="background_black">#2b2b2b</color>
+    <color name="press">#f8f8f8</color>
+<!--    提示-->
+    <color name="note">#1AA8FF</color>
+    <color name="warning">#E89556</color>
+    <color name="alert">#f44336</color>
+    <color name="confirm">#4caf50</color>
+<!--    字色-->
+    <color name="text">#222222</color>
+    <color name="textLine">#999999</color>
+    <color name="textLineDeep">#555555</color>
+    <color name="textLineShallow">#BBBBBB</color>
+</resources>

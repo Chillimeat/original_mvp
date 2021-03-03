@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/pop_apple_dialog_item_layout"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:gravity="center"
+    android:background="@drawable/apple_pop_b0">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/apple_dialog_item_icon"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_gravity="center_vertical"
+        fresco:placeholderImage="@drawable/ic_popmenu_menu"
+        fresco:placeholderImageScaleType="fitXY"/>
+
+    <TextView
+        android:id="@+id/apple_dialog_item_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:gravity="center"
+        android:text="选项item"
+        android:textSize="@dimen/WordSizeTab"
+        android:textColor="@color/text"
+        android:layout_gravity="center_vertical"
+        android:singleLine="true" />
+</LinearLayout>

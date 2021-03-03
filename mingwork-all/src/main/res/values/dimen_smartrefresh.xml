@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<!--    智能刷新-->
+    <integer name="loading_time">10</integer>
+    <integer name="refresh_time">40</integer>
+</resources>

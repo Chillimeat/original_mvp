@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--//////////////////////////////////智能刷新/////////////////////////////////////////////-->
+    <attr name="srlDrawableSize" format="dimension"/><!--图片尺寸-->
+    <attr name="srlDrawableArrowSize" format="dimension"/><!--箭头图片尺寸-->
+    <attr name="srlDrawableProgressSize" format="dimension"/><!--箭头图片尺寸-->
+    <attr name="srlDrawableMarginRight" format="dimension"/><!--图片和文字的间距-->
+    <attr name="srlTextSizeTitle" format="dimension"/><!--标题字体-->
+    <attr name="srlTextSizeTime" format="dimension"/><!--时间字体-->
+    <attr name="srlFinishDuration" format="integer"/><!--完成时停留时间-->
+    <attr name="srlPrimaryColor" format="color"/><!--主要颜色-->
+    <attr name="srlAccentColor" format="color"/><!--强调颜色-->
+    <attr name="srlDrawableArrow" format="reference"/><!--箭头图片-->
+    <attr name="srlDrawableProgress" format="reference"/><!--转动图片-->
+    <attr name="srlDrawableError" format="reference"/><!--错误图片-->
+    <attr name="srlEnableHorizontalDrag" format="boolean"/><!--支持水平拖动-->
+
+    <attr name="srlClassicsSpinnerStyle" format="enum">
+        <enum name="Translate" value="0"/><!--平行移动-->
+        <enum name="Scale" value="1"/><!--拉伸形变-->
+        <enum name="FixedBehind" value="2"/><!--固定在背后-->
+    </attr>
+
+    <attr name="layout_srlSpinnerStyle" format="enum">
+        <enum name="Translate" value="0"/><!--平行移动-->
+        <enum name="Scale" value="1"/><!--拉伸形变-->
+        <enum name="FixedBehind" value="2"/><!--固定在背后-->
+        <enum name="FixedFront" value="3"/><!--固定在前面-->
+        <enum name="MatchLayout" value="4"/><!--填满布局-->
+    </attr>
+
+    <declare-styleable name="SmartRefreshLayout">
+        <attr name="srlPrimaryColor"/><!--初始颜色-->
+        <attr name="srlAccentColor"/><!--标注颜色-->
+        <attr name="srlReboundDuration" format="integer"/><!--回程持续时间-->
+        <attr name="srlHeaderHeight" format="dimension"/><!--头部高度-->
+        <attr name="srlFooterHeight" format="dimension"/><!--脚部高度-->
+        <attr name="srlHeaderInsetStart" format="dimension"/><!--头部插图启动-->
+        <attr name="srlFooterInsetStart" format="dimension"/><!--脚部插图启动-->
+        <attr name="srlDragRate" format="float"/> <!--拖曳-->
+        <attr name="srlHeaderMaxDragRate" format="float"/><!--头部最大拖曳-->
+        <attr name="srlFooterMaxDragRate" format="float"/><!--脚部最大拖曳-->
+        <attr name="srlHeaderTriggerRate" format="float"/><!--头部触发拖曳-->
+        <attr name="srlFooterTriggerRate" format="float"/><!--脚部触发拖曳-->
+        <attr name="srlEnableRefresh" format="boolean"/><!-- 能不能刷新-->
+        <attr name="srlEnableLoadMore" format="boolean"/><!--能不能加载更多-->
+        <attr name="srlEnableHeaderTranslationContent" format="boolean"/><!--头部能不能内容转换-->
+        <attr name="srlEnableFooterTranslationContent" format="boolean"/><!--脚部能不能内容转换-->
+        <attr name="srlHeaderTranslationViewId" format="reference"/><!--头部控件id转换-->
+        <attr name="srlFooterTranslationViewId" format="reference"/><!--脚部控件id转换-->
+        <attr name="srlEnablePreviewInEditMode" format="boolean"/><!--能不能预览编辑更多-->
+        <attr name="srlEnableAutoLoadMore" format="boolean"/><!--能不能自动加载更多-->
+        <attr name="srlEnableOverScrollBounce" format="boolean"/><!--能不能超滚动反弹-->
+        <attr name="srlEnablePureScrollMode" format="boolean"/><!--能不能一个滚动加载更多-->
+        <attr name="srlEnableNestedScrolling" format="boolean"/><!--能不能嵌套滚动-->
+        <attr name="srlEnableScrollContentWhenLoaded" format="boolean"/><!--滚动加载时的内容-->
+        <attr name="srlEnableScrollContentWhenRefreshed" format="boolean"/><!--滚动刷新时的内容-->
+        <attr name="srlEnableLoadMoreWhenContentNotFull" format="boolean"/><!--加载更多没有了的内容-->
+        <attr name="srlEnableFooterFollowWhenLoadFinished" format="boolean"/><!--底部加载失败的内容-->
+        <attr name="srlEnableClipHeaderWhenFixedBehind" format="boolean"/><!--启用剪贴头部，然后固定在后面-->
+        <attr name="srlEnableClipFooterWhenFixedBehind" format="boolean"/><!--启用剪贴页脚，然后固定在后面-->
+        <attr name="srlEnableOverScrollDrag" format="boolean"/><!--启用超滚动拖动-->
+        <attr name="srlDisableContentWhenRefresh" format="boolean"/><!--刷新时禁用内容-->
+        <attr name="srlDisableContentWhenLoading" format="boolean"/><!--加载时禁用内容-->
+        <attr name="srlFixedHeaderViewId" format="reference"/><!--固定头视图ID-->
+        <attr name="srlFixedFooterViewId" format="reference"/><!--固定页脚视图ID-->
+    </declare-styleable>
+
+    <declare-styleable name="SmartRefreshLayout_Layout">
+        <attr name="layout_srlSpinnerStyle"/>
+        <attr name="layout_srlBackgroundColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="ClassicsHeader">
+        <attr name="srlClassicsSpinnerStyle"/><!--古典样式-->
+        <attr name="srlPrimaryColor"/><!--原始颜色-->
+        <attr name="srlAccentColor"/><!--强调颜色-->
+        <attr name="srlFinishDuration"/><!--完成时间-->
+        <attr name="srlDrawableArrow"/><!--箭头-->
+        <attr name="srlDrawableProgress"/><!--进度-->
+        <attr name="srlDrawableError"/><!--错误-->
+        <attr name="srlDrawableMarginRight"/><!--右边距-->
+        <attr name="srlDrawableSize"/><!---->
+        <attr name="srlDrawableArrowSize"/><!--箭头尺寸-->
+        <attr name="srlDrawableProgressSize"/><!--进度大小-->
+        <attr name="srlTextSizeTitle"/><!--文本大小标题-->
+        <attr name="srlTextSizeTime"/><!--文本时间-->
+        <attr name="srlTextTimeMarginTop" format="dimension"/><!--文本时间边缘顶部-->
+        <attr name="srlEnableLastTime" format="boolean"/><!--Enabor弹性时间-->
+    </declare-styleable>
+
+    <declare-styleable name="ClassicsFooter">
+        <attr name="srlClassicsSpinnerStyle"/><!--古典风格-->
+        <attr name="srlPrimaryColor"/><!--原始颜色-->
+        <attr name="srlAccentColor"/><!--重色-->
+        <attr name="srlFinishDuration"/><!--持续时间-->
+        <attr name="srlTextSizeTitle"/><!--课本-->
+        <attr name="srlDrawableArrow"/><!--拖拉排-->
+        <attr name="srlDrawableProgress"/><!--可提取进度-->
+        <attr name="srlDrawableError"/><!--拖欠误差-->
+        <attr name="srlDrawableMarginRight"/><!--右边距-->
+        <attr name="srlDrawableSize"/><!--尺寸-->
+        <attr name="srlDrawableArrowSize"/><!--绘图箭头大小-->
+        <attr name="srlDrawableProgressSize"/><!--可绘制进度大小-->
+    </declare-styleable>
+
+    <declare-styleable name="TwoLevelHeader">
+        <attr name="srlMaxRage" format="float"/>
+        <attr name="srlFloorRage" format="float"/>
+        <attr name="srlRefreshRage" format="float"/>
+        <attr name="srlFloorDuration" format="integer"/>
+        <attr name="srlEnableTwoLevel" format="boolean"/>
+        <attr name="srlEnablePullToCloseTwoLevel" format="boolean"/>
+    </declare-styleable>
+</resources>

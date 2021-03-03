@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--/////////////////////////////////////boxing///////////////////////////////-->
+    <string name="boxing_app_name" translatable="false">Boxing</string>
+    <string name="boxing_ok" translatable="false">确定</string>
+    <string name="boxing_fab_label_camera" translatable="false">拍照</string>
+    <string name="boxing_image_preview_title_fmt" translatable="false">%1$s/%2$s</string>
+    <string name="boxing_image_preview_ok_fmt" translatable="false">%1$s/%2$s 确定</string>
+    <string name="boxing_image_select_ok_fmt" translatable="false">(%1$s/%2$s) 确定</string>
+    <string name="boxing_album_images_fmt" tools:ignore="MissingTranslation">(%d)</string>
+    <string name="boxing_max_image_over_fmt" translatable="false">你最多只能选择%d张图片</string>
+    <string name="boxing_gif_too_big" translatable="false">您选择的gif图片过大，请压缩后再上传</string>
+    <string name="boxing_pick_single_video" translatable="false">视频单选</string>
+    <string name="boxing_pick_multi_image" translatable="false">图片多选</string>
+    <string name="boxing_pick_single_image_crop" translatable="false">图片单选加裁剪</string>
+    <string name="boxing_pick_single_image" translatable="false">图片单选</string>
+    <string name="boxing_video_title" translatable="false">视频相册</string>
+    <string name="boxing_finish" translatable="false">完成</string>
+    <string name="boxing_start_pick" translatable="false">开始选图</string>
+    <string name="boxing_load_image_fail" translatable="false">肥肠抱歉，加载出错啦</string>
+    <string name="boxing_storage_permission_deny" translatable="false">需要访问你的存储设备来选择图片，请在“系统设置”或授权对话框中允许“存储空间”权限。</string>
+    <string name="boxing_camera_permission_deny" translatable="false">需要访问你的相机来拍照，请在“系统设置”或授权对话框中允许“使用相机”权限。</string>
+    <string name="boxing_storage_deny" translatable="false">设备存储读取出错或暂不可用，请稍候重试</string>
+    <string name="boxing_crop_error" translatable="false">肥肠抱歉，裁剪出错啦</string>
+    <string name="boxing_camera_unavailble" tools:ignore="MissingTranslation">相机不可用,请检查相机权限！</string>
+    <string name="boxing_handling" tools:ignore="MissingTranslation">处理中</string>
+    <string name="boxing_default_album" translatable="false">默认相册</string>
+    <string name="boxing_nothing_found" translatable="false">什么也找不到</string>
+    <string name="boxing_too_many_picture_fmt" translatable="false">您最多只能选择%d张图片</string>
+    <string name="boxing_default_album_name" translatable="false">所有相片</string>
+    <string name="boxing_preview" translatable="false">预览</string>
+
+</resources>

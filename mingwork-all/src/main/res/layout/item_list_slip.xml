@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="88dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <indi.ayun.mingwork_all.swipeitem.ad.ElasticHorizontalScrollView
+        android:id="@+id/ElasticHorizontalScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/content_ll"
+                android:layout_width="match_parent"
+                android:layout_height="88dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal"/>
+
+
+            <RelativeLayout
+                android:id="@+id/delete_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="88dp"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:orientation="horizontal"/>
+
+        </LinearLayout>
+    </indi.ayun.mingwork_all.swipeitem.ad.ElasticHorizontalScrollView>
+
+</LinearLayout>

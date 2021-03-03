@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!--//////////////////////////////////加载动画/////////////////////////////////////////////-->
+    <declare-styleable name="LoadingIV">
+        <attr name="LoadingProgressFormat" format="reference"/>
+        <attr name="LoadingProgressTurn" format="reference"/>
+    </declare-styleable>
+
+
+
+
+</resources>

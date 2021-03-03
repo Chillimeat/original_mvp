@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:gravity="center">
+
+    <RelativeLayout
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fillet_white">
+
+        <TextView
+            android:id="@+id/dialog_noteTxt_title"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:gravity="center"
+            android:text="标题"
+            android:textColor="@color/text"
+            android:textSize="@dimen/WordSizeTitle2" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/dialog_noteTxt_title"
+            android:background="@color/line" />
+
+        <TextView
+            android:id="@+id/dialog_noteTxt_con"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dialog_noteTxt_title"
+            android:layout_margin="@dimen/marginCommon"
+            android:gravity="center"
+            android:text="提示文字"
+            android:textColor="@color/text"
+            android:textSize="@dimen/WordSizeText" />
+
+
+        <LinearLayout
+            android:id="@+id/dialog_noteTxt_buttonLL"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_below="@+id/dialog_noteTxt_con"
+            android:background="@drawable/fillet_white_bottom"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/dialog_noteTxt_close"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="取消"
+                android:textColor="@color/textLine"
+                android:textSize="@dimen/WordSizeText" />
+
+            <TextView
+                android:id="@+id/dialog_noteTxt_ok"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="好的"
+                android:textColor="@color/note"
+                android:textSize="@dimen/WordSizeText" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

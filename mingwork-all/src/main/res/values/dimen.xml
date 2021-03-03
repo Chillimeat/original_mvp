@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="barStatus">24dp</dimen>//d
+    <dimen name="barTitle">56dp</dimen>//d
+    <dimen name="barAll">80dp</dimen>//d
+    <dimen name="barAllHalf">40dp</dimen>//d
+
+    <dimen name="nav">54dp</dimen>
+    <dimen name="ImgBar">12dp</dimen>
+    <dimen name="padding">2dp</dimen>
+    <dimen name="division">1dp</dimen>
+    <dimen name="icon">18dp</dimen>
+    <dimen name="dialogWidth">300dp</dimen>
+
+    <dimen name="filletRadiusBig">24dp</dimen>
+    <dimen name="filletRadius">12dp</dimen>
+    <dimen name="filletRadiusSmall">4dp</dimen>
+
+    <dimen name="marginTop">10dp</dimen>//d
+    <dimen name="marginBig">27dp</dimen>
+    <dimen name="marginCommon">20dp</dimen>//d
+    <dimen name="marginMedium">15dp</dimen>
+    <dimen name="marginSmall">5dp</dimen>//d
+    <dimen name="marginSupSmall">3dp</dimen>
+
+    <dimen name="butBarWidth">80dp</dimen>//d
+    <dimen name="butDialogWidth">50dp</dimen>//d
+    <dimen name="butDialogHigh">50dp</dimen>//d
+    <dimen name="butPopWidth">80dp</dimen>//d
+    <dimen name="butPopHigh">60dp</dimen>//d
+    <dimen name="butBigWidth">168dp</dimen>
+    <dimen name="butBigHeight">44dp</dimen>
+
+    <dimen name="WordSizeBar">17sp</dimen>//d
+    <dimen name="WordSizeBarBut">16sp</dimen>//d
+    <dimen name="WordSizeTab">16sp</dimen>//d
+    <dimen name="WordSizeTitle1">18sp</dimen>//d
+    <dimen name="WordSizeTitle2">17sp</dimen>//d
+    <dimen name="WordSizeText">14sp</dimen>//d
+    <dimen name="WordSizeSmallText1">13sp</dimen>//d
+    <dimen name="WordSizeSmallText2">11sp</dimen>//d
+    <dimen name="WordSizeTextImp">16sp</dimen>//d
+    <dimen name="WordSizeBig">22sp</dimen>
+    <dimen name="WordSizeSupBig">36sp</dimen>//d
+    <dimen name="WordSizeMore">14sp</dimen>
+    <dimen name="WordSizeNote">8sp</dimen>
+    <dimen name="WordSizeNav">9sp</dimen>
+</resources>

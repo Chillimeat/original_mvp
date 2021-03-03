@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--通知-->
+    <string name="channel_media" >media</string>
+    <string name="channel_critical" >critical</string>
+    <string name="channel_importance" >importance</string>
+    <string name="channel_default" >default</string>
+    <string name="channel_low" >low</string>
+    <string name="channel_permanent" >permanent</string>
+</resources>

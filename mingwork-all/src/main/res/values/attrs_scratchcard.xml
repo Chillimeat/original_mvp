@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--//////////////////////////////////刮刮乐/////////////////////////////////////////////-->
+    <declare-styleable name="ScratchCard">
+        <attr name="surfaceColor" format="color" />
+        <attr name="surfaceImage" format="reference" />
+        <attr name="android:layout_width"/>
+        <attr name="android:layout_height"/>
+    </declare-styleable>
+
+
+
+
+ 
+
+
+
+</resources>

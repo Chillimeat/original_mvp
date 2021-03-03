@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="app_name" tools:ignore="MissingTranslation">mingwork</string>
+    <string name="hello_world" tools:ignore="MissingTranslation">Hello world!</string>
+
+    <!--通知-->
+    <string name="channel_media" >媒体</string>
+    <string name="channel_critical" >特别重要</string>
+    <string name="channel_importance" >重要</string>
+    <string name="channel_default" >默认</string>
+    <string name="channel_low" >低等级</string>
+    <string name="channel_permanent" >常驻</string>
+</resources>

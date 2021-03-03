@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="dialog_inputOne_title" type="id" />
+    <item name="dialog_inputOne_con" type="id" />
+    <item name="dialog_inputOne_buttonLL" type="id" />
+    <item name="dialog_inputOne_close" type="id" />
+    <item name="dialog_inputOne_ok" type="id" />
+
+    <item name="dialog_confirm_title" type="id"/>
+    <item name="dialog_confirm_con" type="id"/>
+    <item name="dialog_confirm_buttonLL" type="id"/>
+    <item name="dialog_confirm_close" type="id"/>
+    <item name="dialog_confirm_ok" type="id"/>
+
+    <item name="dialog_loading_progress" type="id"/>
+    <item name="dialog_loading_tip" type="id"/>
+
+    <item name="dialog_input2_title" type="id" />
+    <item name="dialog_input2_con" type="id" />
+    <item name="dialog_input2_buttonLL" type="id" />
+    <item name="dialog_input2_close" type="id" />
+    <item name="dialog_input2_ok" type="id" />
+
+    <item name="dialog_noteTxt_title" type="id" />
+    <item name="dialog_noteTxt_con" type="id" />
+    <item name="dialog_noteTxt_buttonLL" type="id" />
+    <item name="dialog_noteTxt_close" type="id" />
+    <item name="dialog_noteTxt_ok" type="id" />
+
+    <item name="dialog_noteImg_layout" type="id" />
+    <item name="dialog_noteImg_img" type="id" />
+    <item name="dialog_noteImg_txt" type="id" />
+    <item name="dialog_noteImg_but" type="id" />
+    <item name="dialog_noteImg_x" type="id" />
+</resources>

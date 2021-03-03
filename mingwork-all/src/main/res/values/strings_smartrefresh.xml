@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--/////////////////////////////////////智能刷新///////////////////////////////-->
+    <string name="srl_header_failed" tools:ignore="MissingTranslation">刷新失败</string>
+    <string name="srl_header_finish" tools:ignore="MissingTranslation">刷新完成</string>
+    <string name="srl_header_loading" tools:ignore="MissingTranslation">正在加载</string>
+    <string name="srl_header_pulling" tools:ignore="MissingTranslation">下拉刷新</string>
+    <string name="srl_header_refreshing" tools:ignore="MissingTranslation">正在刷新</string>
+    <string name="srl_header_release" tools:ignore="MissingTranslation">释放刷新</string>
+    <string name="srl_header_secondary" tools:ignore="MissingTranslation">释放进入二楼</string>
+    <string name="srl_header_update" tools:ignore="MissingTranslation">上次更新 M-d HH:mm</string>
+    <string name="srl_footer_pulling" tools:ignore="MissingTranslation">加载中 …</string>
+    <string name="srl_footer_release" tools:ignore="MissingTranslation">加载中 …</string>
+    <string name="srl_footer_loading" tools:ignore="MissingTranslation">加载中 …</string>
+    <string name="srl_footer_refreshing" tools:ignore="MissingTranslation">加载中…</string>
+    <string name="srl_footer_finish" tools:ignore="MissingTranslation">加载完成</string>
+    <string name="srl_footer_failed" tools:ignore="MissingTranslation">加载失败</string>
+    <string name="srl_footer_nothing" tools:ignore="MissingTranslation">我也是有底线的</string>
+    <string name="srl_content_empty" tools:ignore="MissingTranslation">SmartRefreshLayout中没有找到内容视图。您是否忘记在xml布局文件中添加？</string>
+    <string name="srl_component_falsify" formatted="false" tools:ignore="MissingTranslation">%s 虚假区域\n代表运行时拖动的高度【%.1fdp】 \n而不会显示任何东西</string>
+
+</resources>

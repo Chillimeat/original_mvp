@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MWheelView">
+        <attr name="TextColor" format="color"/>
+        <attr name="TextSize" format="dimension"/>
+        <attr name="Count" format="integer"/>
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    每个节点都支持两个属性：name+path -->
+<!--    path：需要临时授权访问的路径（.代表所有路径）-->
+<!--    name：就是你给这个访问路径起个名字 -->
+<!--    <root-path name="root" path="" /> //代表设备的根目录new File("/");-->
+<!--    <files-path name="files" path="" /> //context.getFilesDir()-->
+<!--    <cache-path name="cache" path="" /> //context.getCacheDir()-->
+<!--    <external-path name="external" path="" /> //Environment.getExternalStorageDirectory()-->
+<!--    <external-files-path name="name" path="path" /> //context.getExternalFilesDirs()-->
+<!--    <external-cache-path name="name" path="path" /> //getExternalCacheDirs()-->
+
+<!--    设备根目录-->
+    <root-path
+        name="root"
+        path="." />
+
+<!--    context.getFilesDir()-->
+    <files-path
+        name="files"
+        path="." />
+
+<!--    context.getCacheDir()-->
+    <cache-path
+        name="cache"
+        path="." />
+
+<!--    九大公共路径-->
+    <!--    代表的目录即为：Environment.getExternalStorageDirectory()-->
+    <external-path
+        name="external_storage_root"
+        path="." />
+    <external-path
+        name="external_storage_pics"
+        path="pics/" />
+    <external-path
+        name="external_storage_alarms"
+        path="Alarms/" />
+    <external-path
+        name="external_storage_dCIM"
+        path="DCIM/" />
+    <external-path
+        name="external_storage_download"
+        path="Download/" />
+    <external-path
+        name="external_storage_movies"
+        path="Movies/" />
+    <external-path
+        name="external_storage_music"
+        path="Music/" />
+    <external-path
+        name="external_storage_notifications"
+        path="Notifications/" />
+    <external-path
+        name="external_storage_pictures"
+        path="Pictures/" />
+    <external-path
+        name="external_storage_podcasts"
+        path="Podcasts/" />
+    <external-path
+        name="external_storage_ringtones"
+        path="Ringtones/" />
+
+
+
+    <!--    代表的目录即为：Environment.getExternalStorageDirectory()+app自定义-->
+    <external-path
+        name="external_storage_app"
+        path="mingwork/" />
+    <external-path
+        name="external_storage_app_img"
+        path="mingwork/img" />
+    <external-path
+        name="external_storage_app_video"
+        path="mingwork/video" />
+    <external-path
+        name="external_storage_app_adv"
+        path="mingwork/adv" />
+    <external-path
+        name="external_storage_app_music"
+        path="mingwork/music" />
+    <external-path
+        name="external_storage_app_download"
+        path="mingwork/download" />
+    <external-path
+        name="external_storage_app_downloadAdv"
+        path="mingwork/download/adv" />
+    <external-path
+        name="external_storage_app_downloadVideo"
+        path="mingwork/download/video" />
+    <external-path
+        name="external_storage_app_downloadImg"
+        path="mingwork/download/img" />
+    <external-path
+        name="external_storage_app_downloadMusic"
+        path="mingwork/download/music" />
+    <external-path
+        name="external_storage_app_cache"
+        path="mingwork/cache" />
+    <external-path
+        name="external_storage_app_cacheVideo"
+        path="mingwork/cache/video" />
+    <external-path
+        name="external_storage_app_cacheImg"
+        path="mingwork/cache/img" />
+    <external-path
+        name="external_storage_app_cacheAdv"
+        path="mingwork/cache/adv" />
+    <external-path
+        name="external_storage_app_cacheMusic"
+        path="mingwork/cache/music" />
+
+<!--    context.getExternalFilesDirs() data/data/包名-->
+    <external-files-path
+        name="data_file"
+        path="." />
+    <external-files-path
+        name="data_file_img"
+        path="img" />
+    <external-files-path
+        name="data_file_video"
+        path="video" />
+    <external-files-path
+        name="data_file_download"
+        path="download" />
+
+<!--    getExternalCacheDir() data/data/包名-->
+    <external-cache-path
+        name="data_cache"
+        path="." />
+
+
+
+
+<!--    使用-->
+<!--    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {-->
+<!--    Uri uri = FileProvider.getUriForFile(CameraActivity.this, "app的包名.fileProvider", photoFile);-->
+<!--    } else {-->
+<!--    Uri uri = Uri.fromFile(photoFile);-->
+<!--    }-->
+
+<!--    解释说明：-->
+<!--    在官方7.0的以上的系统中，尝试传递 file://URI可能会触发FileUriExposedException。要使用content://uri替代file://uri-->
+<!--    需要一个虚拟的路径对文件路径进行映射，所以需要编写个xml文件，通过path以及xml节点确定可访问的目录，通过name属性来映射真实的文件路径。-->
+</paths>

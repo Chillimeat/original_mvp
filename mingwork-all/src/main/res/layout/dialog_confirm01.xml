@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:gravity="center"
+    tools:ignore="MissingDefaultResource">
+
+    <RelativeLayout
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fillet_white">
+
+        <TextView
+            android:id="@id/dialog_confirm_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/barTitle"
+            android:layout_marginLeft="@dimen/marginCommon"
+            android:layout_marginTop="@dimen/marginBig"
+            android:layout_marginRight="@dimen/marginCommon"
+            android:gravity="center"
+            android:text="标题"
+            android:textColor="@color/black"
+            android:textSize="@dimen/WordSizeTitle2" />
+
+        <TextView
+            android:id="@id/dialog_confirm_con"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginLeft="@dimen/marginCommon"
+            android:layout_marginTop="88dp"
+            android:layout_marginRight="@dimen/marginCommon"
+            android:background="@android:color/transparent"
+            android:gravity="center|left"
+            android:text="确认说明"
+            android:textColor="@color/black"
+            android:textSize="@dimen/WordSizeText" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="160dp"
+            android:background="@color/line" />
+
+        <LinearLayout
+            android:id="@id/dialog_confirm_buttonLL"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="161dp"
+            android:background="@drawable/fillet_white_bottom"
+            android:orientation="horizontal"
+            android:weightSum="41">
+
+            <TextView
+                android:id="@id/dialog_confirm_close"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:gravity="center"
+                android:text="取消"
+                android:textColor="@color/black"
+                android:textSize="@dimen/WordSizeText" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:background="@color/line" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@id/dialog_confirm_ok"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:gravity="center"
+                android:text="好的"
+                android:textColor="@color/note"
+                android:textSize="@dimen/WordSizeText" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

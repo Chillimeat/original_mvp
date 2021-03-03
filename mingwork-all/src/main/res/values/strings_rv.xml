@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="rv_load_footer_up" tools:ignore="MissingTranslation">尝试上拉加载</string>
+    <string name="rv_load_footer_refreshing" tools:ignore="MissingTranslation">加载中…</string>
+    <string name="rv_load_footer_finish" tools:ignore="MissingTranslation">加载完成</string>
+    <string name="rv_load_footer_failed" tools:ignore="MissingTranslation">加载失败</string>
+    <string name="rv_load_footer_nothing" tools:ignore="MissingTranslation">我也是有底线的</string>
+
+</resources>
