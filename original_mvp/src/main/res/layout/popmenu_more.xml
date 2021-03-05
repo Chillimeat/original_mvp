@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingRight="@dimen/marginTop">
+
+    <ImageView
+        android:id="@+id/pm_cornerimg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="15dip"
+        android:contentDescription="@null" />
+
+    <indi.ayun.original_mvp.weight.popmenu.PopMenuMoreListView
+        android:id="@+id/pm_listview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:cacheColorHint="@android:color/transparent"
+        android:listSelector="@android:color/transparent"
+        android:divider="#FFFFFF"
+        android:dividerHeight="1px"
+        android:focusable="true" />
+</LinearLayout>

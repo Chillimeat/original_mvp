@@ -1,3 +1,3 @@
-include ':mingwork-all'
+include ':original_mvp'
 include ':app'
-rootProject.name = "MingWork_All"
+rootProject.name = "work01"

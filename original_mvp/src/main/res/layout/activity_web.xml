@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/web_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="indi.ayun.original_mvp.ui.web.WebActivity">
+
+    <RelativeLayout
+        android:id="@+id/web_barTitle_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/barStatus" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/barTitle"
+            android:layout_marginTop="@dimen/barStatus">
+
+            <TextView
+                android:id="@+id/web_top_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="标题"
+                android:textColor="@color/text"
+                android:textSize="@dimen/WordSizeBar" />
+
+            <RelativeLayout
+                android:id="@+id/web_close"
+                android:layout_width="@dimen/butBarWidth"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="12dp"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/ic_arrow_left_grey" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/mc_more"
+                android:layout_width="@dimen/butBarWidth"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="4dp"
+                    android:layout_centerInParent="true"
+                    android:scaleType="fitEnd"
+                    android:src="@drawable/ic_mediabox_more" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+    <WebView
+        android:id="@+id/web_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/web_barTitle_layout" />
+
+
+</RelativeLayout>
