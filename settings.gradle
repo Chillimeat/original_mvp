@@ -1,2 +1,2 @@
 include ':original_mvp'
-rootProject.name = "work01"
+rootProject.name = "OriginalMVP"

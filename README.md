@@ -6,7 +6,7 @@ AS版本4.0以上；
         repositories {
             google()
             jcenter()
-            maven { url "https://jitpack.io"}
+            maven { url "https://www.jitpack.io"}
             mavenCentral() // add repository
             maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
             maven { url "http://maven.aliyun.com/nexus/content/repositories/jcenter/" }
@@ -19,10 +19,11 @@ AS版本4.0以上；
     }
     allprojects {
         repositories {
-            maven { url "https://jitpack.io" }
+            maven { url "https://www.jitpack.io" }
             maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
             maven { url "http://maven.aliyun.com/nexus/content/repositories/jcenter/" }
             maven { url  "http://dl.bintray.com/lukaville/maven" }
+            maven { url 'https://dl.google.com/dl/android/maven2/' }
             google()
             jcenter()
         }
