@@ -1,3 +1,2 @@
 include ':original_mvp'
-include ':app'
 rootProject.name = "work01"
