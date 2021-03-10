@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import indi.ayun.original_mvp.OriginalMVP;
 import indi.ayun.original_mvp.mlog.MLog;
 import okhttp3.FormBody;
 import okhttp3.Interceptor;
@@ -53,9 +54,9 @@ public class RequestParamInterceptor implements Interceptor {
         for (Map.Entry<String, String> stringStringEntry : headers.entrySet()) {
             MLog.d("RequestParamInterceptor:"+stringStringEntry.getKey()+";"+stringStringEntry.getValue());
             MLog.d("RequestParamInterceptor_ApiAuth:"+headers.get("ApiAuth"));
-            builder.addHeader("ApiAuth", headers.get("ApiAuth"));
+           //builder.addHeader("ApiAuth", headers.get("ApiAuth"));
 //            FIXME:这里的问题是，不能获取即时更新的headers
-//            builder.addHeader("ApiAuth", OriginalMVP.getOpCredential().getUserToken());
+            builder.addHeader("ApiAuth", OriginalMVP.getOpCredential().getUserToken());
         }
         return chain.proceed(builder.build());
     }
