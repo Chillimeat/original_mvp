@@ -250,6 +250,25 @@ AndroidManifest：application
         tools:replace="android:allowBackup"
         tools:ignore="GoogleAppIndexingWarning">
     </application>
+AndroidManifest：Preference:
+    <application
+            android:name=".MyApp"
+            android:allowBackup="false"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme"
+            android:usesCleartextTraffic="true"
+            android:requestLegacyExternalStorage="true"
+            tools:replace="android:allowBackup"
+            tools:ignore="GoogleAppIndexingWarning">
+        <provider
+                android:authorities="包名"
+                android:name="indi.ayun.mylibrary.preference.SharedPreferenceProvider"
+                android:process=":remote"
+                android:exported="false"/>
+    </application>
 AndroidManifest：exo播放器
     <?xml version="1.0" encoding="utf-8"?>
     <manifest xmlns:android="http://schemas.android.com/apk/res/android"

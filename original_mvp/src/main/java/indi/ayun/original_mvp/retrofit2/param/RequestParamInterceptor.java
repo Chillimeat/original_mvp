@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import indi.ayun.original_mvp.mlog.MLog;
-import indi.ayun.original_mvp.preference.CredentialPreferences;
 import okhttp3.FormBody;
 import okhttp3.Interceptor;
 import okhttp3.Request;
@@ -51,13 +50,13 @@ public class RequestParamInterceptor implements Interceptor {
         }
 
         Request.Builder builder = oldRequest.newBuilder().method(oldRequest.method(), formBuilder.build());
-//        for (Map.Entry<String, String> stringStringEntry : headers.entrySet()) {
-//            MLog.d("RequestParamInterceptor:"+stringStringEntry.getKey()+";"+stringStringEntry.getValue());
-//            MLog.d("RequestParamInterceptor111111:"+headers.get("ApiAuth"));
-
-            //FIXME:这里的问题是，不能获取即时更新的headers
-            builder.addHeader("ApiAuth", CredentialPreferences.getUserToken());
-        //}
+        for (Map.Entry<String, String> stringStringEntry : headers.entrySet()) {
+            MLog.d("RequestParamInterceptor:"+stringStringEntry.getKey()+";"+stringStringEntry.getValue());
+            MLog.d("RequestParamInterceptor_ApiAuth:"+headers.get("ApiAuth"));
+            builder.addHeader("ApiAuth", headers.get("ApiAuth"));
+//            FIXME:这里的问题是，不能获取即时更新的headers
+//            builder.addHeader("ApiAuth", OriginalMVP.getOpCredential().getUserToken());
+        }
         return chain.proceed(builder.build());
     }
 

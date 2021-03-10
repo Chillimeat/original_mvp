@@ -14,7 +14,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.Random;
 
-import indi.ayun.original_mvp.preference.CredentialPreferences;
+import indi.ayun.original_mvp.OriginalMVP;
 import indi.ayun.original_mvp.utils.verification.IsNothing;
 
 public class FileLog {
@@ -25,10 +25,8 @@ public class FileLog {
     public static void printFile(String tag, File targetDirectory, @Nullable String fileName, String headString, String msg) {
 
         fileName = (fileName == null) ? getFileName() : fileName;
-        String s="未登录用户";
-        if (IsNothing.onAnything(CredentialPreferences.getUserAccount())) {
-            s = "用户"+CredentialPreferences.getUserAccount();
-        }
+        String s=OriginalMVP.getOpCredential().getUserAccount(true);
+
         s=s+"=>"+headString+"  "+msg+"  ("+(new Date(System.currentTimeMillis())).toString() +")\n";
         if (save(targetDirectory, fileName, s)) {
             Log.d(tag, headString + " save log success ! location is >>>" + targetDirectory.getAbsolutePath() + "/" + fileName);

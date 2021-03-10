@@ -15,6 +15,8 @@ import indi.ayun.original_mvp.media_box.impl.BoxingFrescoLoader;
 import indi.ayun.original_mvp.media_box.loader.IBoxingMediaLoader;
 import indi.ayun.original_mvp.mlog.MLog;
 import indi.ayun.original_mvp.notices.NotificationChannels;
+import indi.ayun.original_mvp.preference.OpCredential;
+import indi.ayun.original_mvp.thread.ThreadExecutor;
 import indi.ayun.original_mvp.utils.media.FrescoUtils;
 import indi.ayun.original_mvp.utils.phone.Camera;
 
@@ -25,6 +27,8 @@ public class OriginalMVP {
     public static ActivityMgr activityMgr;
     public static FragmentListenerMgr fragmentListenerMgr;
     public static ComFragmentMgr comFragmentMgr;
+    private static ThreadExecutor mThreadExecutor;
+    public static OpCredential mOpCredential;
 
     private OriginalMVP() {
         throw new UnsupportedOperationException("you can't instantiate me...");
@@ -42,6 +46,9 @@ public class OriginalMVP {
         activityMgr=ActivityMgr.getScreenManager();
         fragmentListenerMgr=FragmentListenerMgr.getScreenManager();
         comFragmentMgr = ComFragmentMgr.getComFragmentMgr();
+        mThreadExecutor=ThreadExecutor.getInstance();
+        mThreadExecutor.setExecutor(5,10,200);
+        mOpCredential=OpCredential.getInstance().init(context);
 
         Camera.getInstance().init(mContext);
         FrescoUtils.initConfig(mContext);
@@ -74,6 +81,19 @@ public class OriginalMVP {
         MLog.switchLog(isShowLog);
     }
 
-    public static void switchSystem(boolean isShowSystem){MLog.switchSystem(isShowSystem);
+    public static void switchSystem(boolean isShowSystem){MLog.switchSystem(isShowSystem); }
+
+    public static ThreadExecutor getThreadExecutor(){
+        if (mThreadExecutor != null) return mThreadExecutor;
+        throw new NullPointerException("you should init first");
+    }
+
+    public static void closeResource(){
+        getThreadExecutor().shutdownNow();
+    }
+
+    public static OpCredential getOpCredential() {
+        if (mOpCredential!=null)return mOpCredential;
+        throw new NullPointerException("you should init first");
     }
 }
