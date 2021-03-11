@@ -31,6 +31,7 @@ public class BaseActivity extends AppCompatActivity implements OnFragmentInterac
         mUtilBase=new UtilBase();
         mUtilBase.setContext(this);
         mUtilBase.setActivity(this);
+        getCommonFragmentMgr().starter(this,this);
         BaseDialog.init(this,this);
     }
 
