@@ -25,6 +25,10 @@ public class BaseActivity extends AppCompatActivity implements OnFragmentInterac
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setInitContext();
+    }
+
+    public void setInitContext(){
         getActivityMgr().addActivity(this);
         getFragmentListenerMgr().addListener(this,this);
         createPermission= CreatePermission.with(this);
@@ -38,6 +42,12 @@ public class BaseActivity extends AppCompatActivity implements OnFragmentInterac
     @Override
     protected void onStart() {
         super.onStart();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        setInitContext();
     }
 
     @Override
