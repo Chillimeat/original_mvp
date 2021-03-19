@@ -13,11 +13,9 @@ import indi.ayun.original_mvp.smartrefresh.listener.OnStateChangedListener;
 import static androidx.annotation.RestrictTo.Scope.LIBRARY;
 import static androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP;
 import static androidx.annotation.RestrictTo.Scope.SUBCLASSES;
-
-
 /**
- * 刷新内部组件
- * Created by SCWANG on 2017/5/26.
+ * @Description 刷新内部组件
+ * @Author Modify by ayun on 2021/3/18 15:35
  */
 public interface RefreshInternal extends OnStateChangedListener {
     /**

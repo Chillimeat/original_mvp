@@ -7,8 +7,10 @@ import android.view.View;
 import androidx.annotation.NonNull;
 
 /**
- * 刷新内容组件
- * Created by SCWANG on 2017/5/26.
+ * @Description 刷新内容组件，
+ * getView，getScrollableView，
+ * onActionDown为 RefreshContent 传递当前触摸事件的坐标，用于智能判断对应坐标位置View的滚动边界和相关信息
+ * @Author Modify by ayun on 2021/3/18 15:23
  */
 public interface RefreshContent {
 

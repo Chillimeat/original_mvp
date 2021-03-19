@@ -1,8 +1,8 @@
 package indi.ayun.original_mvp.smartrefresh.api;
 
 /**
- * 刷新底部
- * Created by SCWANG on 2017/5/26.
+ * @Description 刷新底部
+ * @Author Modify by ayun on 2021/3/18 15:26
  */
 public interface RefreshFooter extends RefreshInternal {
 

@@ -5,8 +5,8 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 
 /**
- * 默认Header创建器
- * Created by SCWANG on 2018/1/26.
+ * @Description 默认Header创建器，上下文与刷新布局，返回刷新头部（RefreshHeader）接口
+ * @Author Modify by ayun on 2021/3/18 15:18
  */
 public interface DefaultRefreshHeaderCreator {
     @NonNull

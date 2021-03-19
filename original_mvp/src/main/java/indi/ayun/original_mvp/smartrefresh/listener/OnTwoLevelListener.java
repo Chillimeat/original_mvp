@@ -1,10 +1,13 @@
-package indi.ayun.original_mvp.smartrefresh.api;
+package indi.ayun.original_mvp.smartrefresh.listener;
 
 
 import androidx.annotation.NonNull;
 
+import indi.ayun.original_mvp.smartrefresh.api.RefreshLayout;
+
 /**
- * 二级刷新监听器
+ * @Description 二级刷新监听器 刷新布局返回布尔值
+ * @Author Modify by ayun on 2021/3/18 15:19
  */
 public interface OnTwoLevelListener {
     /**

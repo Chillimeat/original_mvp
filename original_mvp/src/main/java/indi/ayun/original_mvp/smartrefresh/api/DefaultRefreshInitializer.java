@@ -5,8 +5,8 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 
 /**
- * 默认全局初始化器
- * Created by Administrator on 2018/5/29 0029.
+ * @Description 默认全局初始化器，上下文和刷新布局无返回。
+ * @Author Modify by ayun on 2021/3/18 15:19
  */
 
 public interface DefaultRefreshInitializer {

@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import indi.ayun.original_mvp.R;
 
-import indi.ayun.original_mvp.smartrefresh.api.OnTwoLevelListener;
+import indi.ayun.original_mvp.smartrefresh.listener.OnTwoLevelListener;
 import indi.ayun.original_mvp.smartrefresh.api.RefreshHeader;
 import indi.ayun.original_mvp.smartrefresh.api.RefreshInternal;
 import indi.ayun.original_mvp.smartrefresh.api.RefreshKernel;
