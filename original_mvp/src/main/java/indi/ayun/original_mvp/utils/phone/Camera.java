@@ -12,7 +12,7 @@ import android.provider.MediaStore;
 import androidx.core.content.FileProvider;
 
 import indi.ayun.original_mvp.mlog.MLog;
-import indi.ayun.original_mvp.utils.network.UriUtils;
+import indi.ayun.original_mvp.utils.network.URIUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -124,7 +124,7 @@ public class Camera {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 //打开相册会返回一个经过图像选择器安全化的Uri，直接放入裁剪程序会不识别，抛出[暂不支持此类型：华为7.0]
                 //formatUri会返回根据Uri解析出的真实路径
-                String imgPathSel = UriUtils.formatUri(mContext, imgUriSel);
+                String imgPathSel = URIUtil.formatUri(mContext, imgUriSel);
                 //根据真实路径转成File,然后通过应用程序重新安全化，再放入裁剪程序中才可以识别
                 cropPhoto(mContext, FileProvider.getUriForFile(context, context.getPackageName() + ".fileProvider", new File(imgPathSel)));
                 MLog.i("Kit_sel_path:" + imgPathSel);

@@ -10,7 +10,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-public class UriUtils {
+public class URIUtil {
     /**
      * 根据Uri的不同Scheme解析出在本机的路径
      * @param context
