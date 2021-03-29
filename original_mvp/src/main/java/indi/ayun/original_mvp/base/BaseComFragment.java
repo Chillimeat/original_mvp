@@ -17,6 +17,7 @@ import indi.ayun.original_mvp.i.OnFragmentInteractionListener;
 import indi.ayun.original_mvp.manager.ActivityMgr;
 import indi.ayun.original_mvp.manager.ComFragmentMgr;
 import indi.ayun.original_mvp.manager.FragmentListenerMgr;
+import indi.ayun.original_mvp.mlog.MLog;
 import indi.ayun.original_mvp.permission.CreatePermission;
 
 public class BaseComFragment extends Fragment  implements OnFragmentInteractionListener{
@@ -59,6 +60,7 @@ public class BaseComFragment extends Fragment  implements OnFragmentInteractionL
 
     @Override
     public void onAttach(@NonNull Context context) {
+        MLog.d("生命周期");
         super.onAttach(context);
         activity=(Activity)context;
         getFragmentListenerMgr().addListener(this,this);
@@ -75,12 +77,14 @@ public class BaseComFragment extends Fragment  implements OnFragmentInteractionL
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        MLog.d("生命周期");
         super.onCreate(savedInstanceState);
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        MLog.d("生命周期");
         return null;
     }
     //runinggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
@@ -176,6 +180,7 @@ public class BaseComFragment extends Fragment  implements OnFragmentInteractionL
     //runinggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
     @Override
     public void onResume() {
+        MLog.d("生命周期");
         super.onResume();
         //得到Fragment的根布局并使该布局可以获得焦点
         getView().setFocusableInTouchMode(true);
@@ -197,6 +202,7 @@ public class BaseComFragment extends Fragment  implements OnFragmentInteractionL
 
     @Override
     public void onDestroyView() {
+        MLog.d("生命周期");
         super.onDestroyView();
         getFragmentListenerMgr().removeListener(this);
     }

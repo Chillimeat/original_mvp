@@ -17,6 +17,7 @@ import indi.ayun.original_mvp.i.OnFragmentInteractionListener;
 import indi.ayun.original_mvp.manager.ActivityMgr;
 import indi.ayun.original_mvp.manager.ComFragmentMgr;
 import indi.ayun.original_mvp.manager.FragmentListenerMgr;
+import indi.ayun.original_mvp.mlog.MLog;
 import indi.ayun.original_mvp.permission.CreatePermission;
 
 public class BaseActivity extends AppCompatActivity implements OnFragmentInteractionListener {
@@ -24,6 +25,7 @@ public class BaseActivity extends AppCompatActivity implements OnFragmentInterac
     private UtilBase mUtilBase;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        MLog.d("生命周期");
         super.onCreate(savedInstanceState);
         setInitContext();
     }
@@ -41,17 +43,20 @@ public class BaseActivity extends AppCompatActivity implements OnFragmentInterac
 
     @Override
     protected void onStart() {
+        MLog.d("生命周期");
         super.onStart();
     }
 
     @Override
     protected void onRestart() {
+        MLog.d("生命周期");
         super.onRestart();
         setInitContext();
     }
 
     @Override
     protected void onResume() {
+        MLog.d("生命周期");
         super.onResume();
     }
 
@@ -172,16 +177,19 @@ public class BaseActivity extends AppCompatActivity implements OnFragmentInterac
 
     @Override
     protected void onPause() {
+        MLog.d("生命周期");
         super.onPause();
     }
 
     @Override
     protected void onStop() {
+        MLog.d("生命周期");
         super.onStop();
     }
 
     @Override
     protected void onDestroy() {
+        MLog.d("生命周期");
         super.onDestroy();
         getActivityMgr().removeActivity(this);
         getFragmentListenerMgr().removeListener(this);

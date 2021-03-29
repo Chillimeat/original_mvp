@@ -13,6 +13,7 @@ import androidx.multidex.MultiDexApplication;
 import indi.ayun.original_mvp.OriginalMVP;
 import indi.ayun.original_mvp.daemon.AbsWorkService;
 import indi.ayun.original_mvp.daemon.DaemonEnv;
+import indi.ayun.original_mvp.mlog.MLog;
 import indi.ayun.original_mvp.preference.OpCredential;
 import indi.ayun.original_mvp.utils.ActivityLifecycleListener;
 
@@ -27,6 +28,7 @@ public abstract class BaseApplication extends MultiDexApplication {
     @SuppressLint("NewApi")
     @Override
     public void onCreate() {
+        MLog.d("生命周期");
         super.onCreate();
         mAlarm= (AlarmManager) getSystemService(ALARM_SERVICE);
         mKeyguardMgr= (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
@@ -68,6 +70,7 @@ public abstract class BaseApplication extends MultiDexApplication {
 
     @Override
     public void onTerminate() {
+        MLog.d("生命周期");
         // 程序终止的时候执行
         //ToastUtil.showCenter("onTerminate");
         System.out.print("onTerminate");
@@ -76,6 +79,7 @@ public abstract class BaseApplication extends MultiDexApplication {
     }
     @Override
     public void onLowMemory() {
+        MLog.d("生命周期");
         // 低内存的时候执行
         //ToastUtil.showCenter("onLowMemory");
         System.out.print("onLowMemory");
@@ -84,6 +88,7 @@ public abstract class BaseApplication extends MultiDexApplication {
     }
     @Override
     public void onTrimMemory(int level) {
+        MLog.d("生命周期");
         // 程序在内存清理的时候执行
         //ToastUtil.showCenter("onTrimMemory");
         System.out.print("onTrimMemory");

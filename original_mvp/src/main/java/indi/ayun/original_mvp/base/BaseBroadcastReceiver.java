@@ -4,6 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
+import indi.ayun.original_mvp.mlog.MLog;
+
 
 public class BaseBroadcastReceiver extends BroadcastReceiver {
     private UtilBase mUtilBase;
@@ -20,6 +22,7 @@ public class BaseBroadcastReceiver extends BroadcastReceiver {
      */
     @Override
     public void onReceive(Context context, Intent intent) {
+        MLog.d("生命周期");
         mUtilBase=new UtilBase();
         mUtilBase.setContext(context);
     }

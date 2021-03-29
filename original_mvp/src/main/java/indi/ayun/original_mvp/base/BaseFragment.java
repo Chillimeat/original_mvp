@@ -16,6 +16,7 @@ import indi.ayun.original_mvp.i.OnFragmentInteractionListener;
 import indi.ayun.original_mvp.manager.ActivityMgr;
 import indi.ayun.original_mvp.manager.ComFragmentMgr;
 import indi.ayun.original_mvp.manager.FragmentListenerMgr;
+import indi.ayun.original_mvp.mlog.MLog;
 import indi.ayun.original_mvp.permission.CreatePermission;
 
 import java.util.HashMap;
@@ -70,6 +71,7 @@ public class BaseFragment extends Fragment  implements OnFragmentInteractionList
 
     @Override
     public void onAttach(@NonNull Context context) {
+        MLog.d("生命周期");
         super.onAttach(context);
         getFragmentListenerMgr().addListener(this,this);
         activity=(FragmentActivity) context;
@@ -83,12 +85,13 @@ public class BaseFragment extends Fragment  implements OnFragmentInteractionList
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        MLog.d("生命周期");
         super.onCreate(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+        MLog.d("生命周期");
         return null;
     }
 
@@ -249,6 +252,7 @@ public class BaseFragment extends Fragment  implements OnFragmentInteractionList
     //runinggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
     @Override
     public void onDestroyView() {
+        MLog.d("生命周期");
         super.onDestroyView();
         getFragmentListenerMgr().removeListener(this);
         FIRST.remove(TAG);
