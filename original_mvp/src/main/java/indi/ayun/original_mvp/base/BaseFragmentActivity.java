@@ -23,6 +23,7 @@ import indi.ayun.original_mvp.permission.CreatePermission;
 public class BaseFragmentActivity extends FragmentActivity implements OnFragmentInteractionListener {
     private CreatePermission createPermission;
     private UtilBase mUtilBase;
+    private boolean isFirst=true;
     public BaseFragmentActivity(){
 
     }
@@ -61,6 +62,7 @@ public class BaseFragmentActivity extends FragmentActivity implements OnFragment
     @Override
     protected void onResume() {
         MLog.d("生命周期");
+        isFirst=false;
         super.onResume();
     }
 
@@ -168,6 +170,10 @@ public class BaseFragmentActivity extends FragmentActivity implements OnFragment
         } else {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         }
+    }
+
+    public boolean isFirst() {
+        return isFirst;
     }
 
     //--------------------------------------------------------------------------------------------------------------------功能
