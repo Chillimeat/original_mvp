@@ -5,6 +5,7 @@ import android.app.Application;
 import android.os.Bundle;
 
 import indi.ayun.original_mvp.OriginalMVP;
+import indi.ayun.original_mvp.preference.OpCredential;
 
 public class ActivityLifecycleListener implements Application.ActivityLifecycleCallbacks {
 
@@ -23,24 +24,24 @@ public class ActivityLifecycleListener implements Application.ActivityLifecycleC
 
     @Override
     public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-        OriginalMVP.getOpCredential().saveAPPState(RECEPTION);
+        OpCredential.getInstance().saveAPPState(RECEPTION);
     }
 
     @Override
     public void onActivityStarted(Activity activity) {
         refCount++;
-        OriginalMVP.getOpCredential().saveAPPState(RECEPTION);
+        OpCredential.getInstance().saveAPPState(RECEPTION);
         //onStart() 一般表示一个Activity 处于前台
     }
 
     @Override
     public void onActivityResumed(Activity activity) {
-        OriginalMVP.getOpCredential().saveAPPState(RECEPTION);
+        OpCredential.getInstance().saveAPPState(RECEPTION);
     }
 
     @Override
     public void onActivityPaused(Activity activity) {
-        OriginalMVP.getOpCredential().saveAPPState(BACKSTAGE);
+        OpCredential.getInstance().saveAPPState(BACKSTAGE);
     }
 
     @Override
@@ -48,7 +49,7 @@ public class ActivityLifecycleListener implements Application.ActivityLifecycleC
         refCount--;
         //onStop() 一般表示Activity在后台不可见.refCount=0,app 已经处于后台了
         if(refCount == 0){
-            OriginalMVP.getOpCredential().saveAPPState(BACKSTAGE);
+            OpCredential.getInstance().saveAPPState(BACKSTAGE);
         }
     }
 
@@ -59,6 +60,6 @@ public class ActivityLifecycleListener implements Application.ActivityLifecycleC
 
     @Override
     public void onActivityDestroyed(Activity activity) {
-        OriginalMVP.getOpCredential().saveAPPState(ABSENT);
+        OpCredential.getInstance().saveAPPState(ABSENT);
     }
 }

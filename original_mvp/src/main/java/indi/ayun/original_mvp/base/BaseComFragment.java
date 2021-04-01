@@ -24,8 +24,9 @@ import indi.ayun.original_mvp.manager.ComFragmentMgr;
 import indi.ayun.original_mvp.manager.FragmentListenerMgr;
 import indi.ayun.original_mvp.mlog.MLog;
 import indi.ayun.original_mvp.permission.CreatePermission;
+import indi.ayun.original_mvp.utils.verification.IsNothing;
 
-public class BaseComFragment extends Fragment  implements OnFragmentInteractionListener{
+public abstract class BaseComFragment extends Fragment  implements OnFragmentInteractionListener{
     protected OnFragmentInteractionListener listener;
     public String TAG = "BaseComFragment";
     private FragmentManager mFragmentManager;
@@ -35,12 +36,14 @@ public class BaseComFragment extends Fragment  implements OnFragmentInteractionL
     private UtilBase mUtilBase;
 
     private Map<String,Integer> FIRST = new HashMap<>();
+    private Map<String,Boolean> executeAgain = new HashMap<>();
     public BaseComFragment()
     {
         this.TAG = getClass().getName();
         fragment=this;
         getCommonFragmentMgr().addComFragment(this);
         FIRST.put(TAG,1);
+        executeAgain.put(TAG,true);
     }
 
     public BaseComFragment(OnFragmentInteractionListener listener)
@@ -50,6 +53,7 @@ public class BaseComFragment extends Fragment  implements OnFragmentInteractionL
         fragment=this;
         getCommonFragmentMgr().addComFragment(this);
         FIRST.put(TAG,1);
+        executeAgain.put(TAG,true);
     }
 
     public BaseComFragment(OnFragmentInteractionListener listener, FragmentManager fragmentManager)
@@ -60,6 +64,7 @@ public class BaseComFragment extends Fragment  implements OnFragmentInteractionL
         fragment=this;
         getCommonFragmentMgr().addComFragment(this);
         FIRST.put(TAG,1);
+        executeAgain.put(TAG,true);
     }
 
     public String getTAG()
@@ -96,6 +101,7 @@ public class BaseComFragment extends Fragment  implements OnFragmentInteractionL
      */
     @Override
     public void onInflate(@NonNull Context context, @NonNull AttributeSet attrs, @Nullable Bundle savedInstanceState) {
+        MLog.d("生命周期");
         super.onInflate(context, attrs, savedInstanceState);
     }
 
@@ -128,6 +134,7 @@ public class BaseComFragment extends Fragment  implements OnFragmentInteractionL
      */
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        MLog.d("生命周期");
         super.onActivityCreated(savedInstanceState);
     }
 
@@ -136,6 +143,7 @@ public class BaseComFragment extends Fragment  implements OnFragmentInteractionL
      */
     @Override
     public void onStart() {
+        MLog.d("生命周期");
         super.onStart();
     }
 
@@ -162,6 +170,18 @@ public class BaseComFragment extends Fragment  implements OnFragmentInteractionL
                 return false;
             }
         });
+        if (IsNothing.onAnything(FIRST.get(TAG))&&FIRST.get(TAG)>1) {
+            if (executeAgain.get(TAG)){//如果是可以执行就执行
+                executeAgain.put(TAG,false);
+                int num=FIRST.get(TAG);
+                FIRST.put(TAG,num+1);
+                boolean bb=onAgainVisible(FIRST.get(TAG));//交互
+                executeAgain.put(TAG,bb);//交互完了再执行
+            }
+        } else {
+            int num=FIRST.get(TAG);
+            FIRST.put(TAG,num+1);
+        }
     }
 
     /**
@@ -169,6 +189,7 @@ public class BaseComFragment extends Fragment  implements OnFragmentInteractionL
      */
     @Override
     public void onPause() {
+        MLog.d("生命周期");
         super.onPause();
     }
 
@@ -177,6 +198,7 @@ public class BaseComFragment extends Fragment  implements OnFragmentInteractionL
      */
     @Override
     public void onStop() {
+        MLog.d("生命周期");
         super.onStop();
     }
 
@@ -187,8 +209,6 @@ public class BaseComFragment extends Fragment  implements OnFragmentInteractionL
     public void onDestroyView() {
         MLog.d("生命周期");
         super.onDestroyView();
-        getFragmentListenerMgr().removeListener(this);
-        FIRST.remove(TAG);
     }
 
     /**
@@ -196,7 +216,11 @@ public class BaseComFragment extends Fragment  implements OnFragmentInteractionL
      */
     @Override
     public void onDestroy() {
+        MLog.d("生命周期");
         super.onDestroy();
+        getFragmentListenerMgr().removeListener(this);
+        FIRST.remove(TAG);
+        executeAgain.remove(TAG);
     }
 
     /**
@@ -206,6 +230,13 @@ public class BaseComFragment extends Fragment  implements OnFragmentInteractionL
     public void onDetach() {
         super.onDetach();
     }
+    /**
+     * 监听不是初始化的第一次处于可见状态
+     * 执行完了就返回
+     */
+    public abstract boolean onAgainVisible(int num);
+
+
 
     //runinggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
 
@@ -301,10 +332,17 @@ public class BaseComFragment extends Fragment  implements OnFragmentInteractionL
         if (isVisibleToUser) {
             //可见
             onVisible();
-            if (FIRST.get(TAG) != 1) {
-                onAgainVisible();//交互
+            if (IsNothing.onAnything(FIRST.get(TAG))&&FIRST.get(TAG)>1) {
+                if (executeAgain.get(TAG)){//如果是可以执行就执行
+                    executeAgain.put(TAG,false);
+                    int num=FIRST.get(TAG);
+                    FIRST.put(TAG,num+1);
+                    boolean bb=onAgainVisible(FIRST.get(TAG));//交互
+                    executeAgain.put(TAG,bb);//交互完了再执行
+                }
             } else {
-                FIRST.put(TAG,2) ;
+                int num=FIRST.get(TAG);
+                FIRST.put(TAG,num+1);
             }
         } else {
             //不可见
@@ -332,10 +370,17 @@ public class BaseComFragment extends Fragment  implements OnFragmentInteractionL
         } else {
             //显示
             onVisible();
-            if (FIRST.get(TAG) != 1) {
-                onAgainVisible();//交互
+            if (IsNothing.onAnything(FIRST.get(TAG))&&FIRST.get(TAG)>1) {
+                if (executeAgain.get(TAG)){//如果是可以执行就执行
+                    executeAgain.put(TAG,false);
+                    int num=FIRST.get(TAG);
+                    FIRST.put(TAG,num+1);
+                    boolean bb=onAgainVisible(FIRST.get(TAG));//交互
+                    executeAgain.put(TAG,bb);//交互完了再执行
+                }
             } else {
-                FIRST.put(TAG,2) ;
+                int num=FIRST.get(TAG);
+                FIRST.put(TAG,num+1);
             }
         }
     }
@@ -350,12 +395,6 @@ public class BaseComFragment extends Fragment  implements OnFragmentInteractionL
      * 监听处于可见状态
      */
     public void onVisible(){
-
-    }
-    /**
-     * 监听不是初始化的第一次处于可见状态
-     */
-    public void onAgainVisible(){
 
     }
 

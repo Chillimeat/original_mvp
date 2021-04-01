@@ -17,7 +17,6 @@ import indi.ayun.original_mvp.mlog.MLog;
 import indi.ayun.original_mvp.preference.OpCredential;
 import indi.ayun.original_mvp.utils.ActivityLifecycleListener;
 
-import static indi.ayun.original_mvp.OriginalMVP.mOpCredential;
 
 
 public abstract class BaseApplication extends MultiDexApplication {
@@ -44,13 +43,13 @@ public abstract class BaseApplication extends MultiDexApplication {
     public int TYPE_TOKEN_VARIABLE=1;
     public void initAccessToken(String token,int type){
         if (type==0) {
-            if (!OriginalMVP.getOpCredential().getUserLogin()) {
-                OriginalMVP.getOpCredential().saveUserToken(token);
+            if (!OpCredential.getInstance().getUserLogin()) {
+                OpCredential.getInstance().saveUserToken(token);
             }
         }
         if (type==1){
-            if (OriginalMVP.getOpCredential().getUserLogin()) {
-                OriginalMVP.getOpCredential().saveUserToken(token);
+            if (OpCredential.getInstance().getUserLogin()) {
+                OpCredential.getInstance().saveUserToken(token);
             }
         }
     }

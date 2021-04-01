@@ -13,6 +13,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.request.ImageRequest;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
 
+import indi.ayun.original_mvp.dialog.FirstMustNoteDialog;
 import indi.ayun.original_mvp.mlog.MLog;
 import indi.ayun.original_mvp.utils.app.IntentSkipUtil;
 import indi.ayun.original_mvp.widgets.CountDownButton;
@@ -26,14 +27,18 @@ import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class SplashActivityUI {
     private static final String TAG=SplashActivityUI.class.getSimpleName();
 
-    private Activity mContext;
-    private Class skipActivity;
+    private final Activity mContext;
+    private Class<? extends Activity> skipActivity;
     private SimpleExoPlayer simpleExoPlayer;
+    private SplashHelper splashHelper;
     //view
-    private View rootView;
+    private final View rootView;
     private TextView mComCountDownTV;
     private Button mComSkipBut;
     private SimpleDraweeView mComScreenImg,mSplashDefaultImg;
@@ -42,6 +47,11 @@ public class SplashActivityUI {
     //state
     private boolean init=false;
 
+    /**
+     * 初始化UI
+     * @param context
+     * @param root
+     */
     public SplashActivityUI(Activity context, View root){
         this.mContext=context;
         this.rootView=root;
@@ -51,7 +61,27 @@ public class SplashActivityUI {
         mComSkipBut.setVisibility(View.GONE);
         mComScreenImg.setVisibility(View.GONE);
         videoPlay.setVisibility(View.GONE);
+        splashHelper = new SplashHelper(context);
+        splashHelper.setAppFile();
+        splashHelper.firstBasePermission();
     }
+
+    /**
+     * 获取SplashHelper对象，SplashActivityUI这里只负责UI方面工作
+     * @return
+     */
+    public SplashHelper getSplashHelper() {
+        if (splashHelper==null){
+            splashHelper = new SplashHelper(mContext);
+            splashHelper.setAppFile();
+            splashHelper.firstBasePermission();
+        }
+        return splashHelper;
+    }
+
+    /**
+     * 绑定控件
+     */
     private void findViews(){
         if (init||rootView==null){
             return;
@@ -64,7 +94,31 @@ public class SplashActivityUI {
         init=true;
     }
 
-    public void onSkipBut(final Class activity){
+    /**
+     * 是否立马跳转
+     * @param isSkip
+     * @param activity
+     */
+    public void onSkipNow(final Class<? extends Activity> activity,boolean isSkip){
+        if (!isSkip){
+            return;
+        }
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                IntentSkipUtil.skipFinish(mContext,activity);
+            }
+        };
+        Timer timer = new Timer();
+        timer.schedule(task, 1500);
+    }
+
+
+    /**
+     * 跳转按钮
+     * @param activity
+     */
+    public void onSkipBut(final Class<? extends Activity> activity){
         findViews();
         mComCountDownTV.setVisibility(View.GONE);
         mComSkipBut.setVisibility(View.VISIBLE);
@@ -78,7 +132,16 @@ public class SplashActivityUI {
         });
     }
 
-    public void onCountdownBut(final String countDownString, final String finishString, final int max, final int interval, final Class activity,boolean isSkipBut){
+    /**
+     * 倒数跳转按钮
+     * @param countDownString
+     * @param finishString
+     * @param max
+     * @param interval
+     * @param activity
+     * @param isSkipBut
+     */
+    public void onCountdownBut(final String countDownString, final String finishString, final int max, final int interval, final Class<? extends Activity> activity,boolean isSkipBut){
         findViews();
 
         mComCountDownTV.setVisibility(View.VISIBLE);
@@ -110,17 +173,31 @@ public class SplashActivityUI {
 
     }
 
+    /**
+     * 塞入背景图片地址
+     * @param imgPath
+     */
     public void onScreenImg(String imgPath){
         findViews();
         mComScreenImg.setVisibility(View.VISIBLE);
         videoPlay.setVisibility(View.GONE);
         mComScreenImg.setImageURI(Uri.parse(imgPath));
     }
-    public void onScreenImg(){
+
+    /**
+     * 塞入背景图片
+     */
+    public void onScreenImg(int resId){
         findViews();
         mComScreenImg.setVisibility(View.VISIBLE);
+        mComScreenImg.setImageResource(resId);
         videoPlay.setVisibility(View.GONE);
     }
+
+    /**
+     * 塞入背景动图地址
+     * @param imgPath
+     */
     public void onScreenGif(String imgPath){
         findViews();
         mComScreenImg.setVisibility(View.VISIBLE);
@@ -137,7 +214,13 @@ public class SplashActivityUI {
                 .build();
         mComScreenImg.setController(draweeController);
     }
-    public void onVideo(String imgPath,Class activity){
+
+    /**
+     * 播放视频的地址
+     * @param imgPath
+     * @param activity
+     */
+    public void onVideo(String imgPath,Class<? extends Activity> activity){
         skipActivity=activity;
         findViews();
         mComScreenImg.setVisibility(View.GONE);
@@ -163,7 +246,7 @@ public class SplashActivityUI {
         simpleExoPlayer.setPlayWhenReady(true);
     }
 
-    private Player.DefaultEventListener exoListener = new Player.DefaultEventListener() {
+    private final Player.DefaultEventListener exoListener = new Player.DefaultEventListener() {
         @Override
         public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
             // 视频播放状态
@@ -206,10 +289,17 @@ public class SplashActivityUI {
                     // 意外的错误
                     MLog.d("意外的错误");
                     break;
+                case ExoPlaybackException.TYPE_OUT_OF_MEMORY:
+                    break;
+                case ExoPlaybackException.TYPE_REMOTE:
+                    break;
             }
         }
     };
 
+    /**
+     * 释放视频资源
+     */
     public void releasePlayer() {
         if (simpleExoPlayer != null) {
             simpleExoPlayer.release();
@@ -229,4 +319,6 @@ public class SplashActivityUI {
     public void VideoPlayVisibility(int v){
         videoPlay.setVisibility(v);
     }
+
+
 }

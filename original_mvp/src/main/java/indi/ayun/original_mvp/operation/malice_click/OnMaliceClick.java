@@ -1,4 +1,4 @@
-package indi.ayun.original_mvp.malice_click;
+package indi.ayun.original_mvp.operation.malice_click;
 
 import android.view.View;
 

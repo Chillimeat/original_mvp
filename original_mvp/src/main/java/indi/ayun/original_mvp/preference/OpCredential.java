@@ -109,7 +109,7 @@ public class OpCredential {
     private Op op;
 
     public OpCredential init(Context context) {
-        op=new Op(context,"LivingClock");
+        op=new Op(context,OriginalMVP.getAppName());
         return this;
     }
 

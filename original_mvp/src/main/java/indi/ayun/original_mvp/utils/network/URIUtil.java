@@ -10,7 +10,156 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.text.TextUtils;
+
+import java.io.IOException;
+
+import indi.ayun.original_mvp.mlog.MLog;
+import indi.ayun.original_mvp.preference.OpBaseSetting;
+import okhttp3.HttpUrl;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 public class URIUtil {
+
+    /**
+     * 获取隐藏的网址中的文件名
+     * @param url
+     * @return
+     */
+    public static String getRedirectURLName(String url){
+        String fileName = null;
+        if (!TextUtils.isEmpty(url)) {
+            try {
+                OkHttpClient client = new OkHttpClient();//创建OkHttpClient对象
+                Request request = new Request.Builder()
+                        .url(url)//请求接口。如果需要传参拼接到接口后面。
+                        .build();//创建Request 对象
+                Response response = client.newCall(request).execute();//得到Response 对象
+                HttpUrl realUrl = response.request().url();
+                MLog.e("zmm", "real:" + realUrl);
+                if (realUrl != null) {
+                    String temp = realUrl.toString();
+                    fileName = temp.substring(temp.lastIndexOf("/") + 1);
+
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                MLog.e("zmm", "Get File Name:error" + e);
+            }
+        }
+        MLog.e("zmm", "fileName--->" + fileName);
+        return fileName;
+
+    }
+
+    /**
+     * 通过传进来得值计算出后缀
+     * @param s 值：网址，本地地址，文件名，后缀
+     * @return
+     */
+    public static StringBuilder calculationFileName(String s){
+        StringBuilder name= new StringBuilder("default");
+        boolean isFileName=false,isFileAllName=false,isUri_after=false,isUri_in=false;
+        String[] ss =s.split("/");
+        MLog.d("FileName:"+ss.length+"; last:"+ss[ss.length-1]);
+        if (ss.length==0||!s.contains("/")){//"/"和“xxxxx”
+            int dotIndex = s.lastIndexOf(".");
+            if(dotIndex < 0 ){
+                isFileName=true;
+            }
+            if (dotIndex > 0 ){
+                isFileAllName = true;
+            }
+        }
+        else {
+            int dotIndex = ss[ss.length-1].lastIndexOf(".");
+            if(dotIndex < 0 ){//文件名在中间
+                isUri_in=true;
+            }
+            if (dotIndex > 0 ){//文件名在最后
+                isUri_after = true;
+            }
+        }
+
+        if (isUri_in){
+            for (int i=ss.length-1;i>=0;i--){
+                if (!ss[i].contains(OpBaseSetting.getInstance().getDomain())) {//不是域名
+                    int dotIndex = ss[i].lastIndexOf(".");
+                    if (dotIndex > 0) {
+                        name= new StringBuilder(ss[i].substring(0,dotIndex));
+                    }
+                }
+            }
+        }
+
+        if (isUri_after){
+            int dotIndex = s.lastIndexOf(".");
+            int slashIndex = s.lastIndexOf("/");
+            name= new StringBuilder(s.substring(slashIndex+1,dotIndex));
+        }
+        if (isFileAllName){
+            name= new StringBuilder(ss[0]);
+        }
+        if (isFileName) {
+            name= new StringBuilder(s);
+        }
+        return name;
+    }
+
+    /**
+     * 通过传进来得值计算出后缀
+     * @param defaults 默认后缀
+     * @param s 值：网址，本地地址，文件名，后缀
+     * @return
+     */
+    public static String calculationSuffix(String s,String defaults){
+        String suffix= defaults;
+        boolean isFileName=false,isFileAllName=false,isUri_after=false,isUri_in=false;
+        String[] ss =s.split("/");
+        if (ss.length==0||!s.contains("/")){//"/"和“xxxxx”
+            int dotIndex = s.lastIndexOf(".");
+            if(dotIndex < 0 ){
+                isFileName=true;
+            }
+            if (dotIndex > 0 ){
+                isFileAllName = true;
+            }
+        }
+        else {
+            int dotIndex = ss[ss.length-1].lastIndexOf(".");
+            if(dotIndex < 0 ){//文件名在中间
+                isUri_in=true;
+            }
+            if (dotIndex > 0 ){//文件名在最后
+                isUri_after = true;
+            }
+        }
+
+        if (isUri_in){
+            for (int i=ss.length-1;i>=0;i--){
+                if (!ss[i].contains(OpBaseSetting.getInstance().getDomain())) {//不是域名
+                    int dotIndex = ss[i].lastIndexOf(".");
+                    if (dotIndex > 0) {//文件名在最后
+                        suffix= ss[i].substring(dotIndex+1,ss[i].length());
+                    }
+                }
+            }
+        }
+
+        if (isUri_after){
+            int dotIndex = s.lastIndexOf(".");
+            suffix= s.substring(dotIndex+1,s.length());
+        }
+        if (isFileAllName){
+            suffix= ss[1];
+        }
+        if (isFileName) {
+            suffix= defaults;
+        }
+        return suffix;
+    }
     /**
      * 根据Uri的不同Scheme解析出在本机的路径
      * @param context

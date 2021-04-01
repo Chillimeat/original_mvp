@@ -1,5 +1,12 @@
 package indi.ayun.original_mvp.utils;
 
+import indi.ayun.original_mvp.mlog.MLog;
+import indi.ayun.original_mvp.utils.network.URIUtil;
+
+/**
+ * @Description 文件类型
+ * @Author Modify by ayun on 2021/3/24 22:18
+ */
 public class MIMETypeUtil {
     private static MIMETypeUtil mimeTypeUtil;
 
@@ -61,6 +68,23 @@ public class MIMETypeUtil {
     private String PICTURE_TIFF="tiff";        //image/tiff
     private String PICTURE_TGA="tga";        //image/x-targa
     private String PICTURE_PSD="psd";        //image/vnd.adobe.photoshop
+    private String PICTURE_WEBP="Webp";        //image/vnd.adobe.photoshop"},
+    private String PICTURE_BAIBMP="baiBMP";        //image/vnd.adobe.photoshop"},
+    private String PICTURE_PCX="PCX";        //image/vnd.adobe.photoshop"},
+    private String PICTURE_EXIF="EXIF";        //image/vnd.adobe.photoshop"},
+    private String PICTURE_FPX="FPX";        //image/vnd.adobe.photoshop"},
+    private String PICTURE_SVG="SVG";        //image/vnd.adobe.photoshop"},
+    private String PICTURE_CDR="CDR";        //image/vnd.adobe.photoshop"},
+    private String PICTURE_PCD="PCD";        //image/vnd.adobe.photoshop"},
+    private String PICTURE_DXF="DXF";        //image/vnd.adobe.photoshop"},
+    private String PICTURE_UFO="UFO";        //image/vnd.adobe.photoshop"},
+    private String PICTURE_EPS="EPS,";        //image/vnd.adobe.photoshop"},
+    private String PICTURE_AI="AI";        //image/vnd.adobe.photoshop"},
+    private String PICTURE_RAW="RAW";        //image/vnd.adobe.photoshop"},
+    private String PICTURE_WMF="WMF,";        //image/vnd.adobe.photoshop"},
+    private String PICTURE_FLIC="FLIC";        //image/vnd.adobe.photoshop"},
+    private String PICTURE_EMF="EMF,";        //image/vnd.adobe.photoshop"},
+    private String PICTURE_ICO="ICO";        //image/vnd.adobe.photoshop"}
 
     //音频文件类型的
     private String AUDIO_MP3="mp3";        //audio/mpeg
@@ -247,5 +271,120 @@ public class MIMETypeUtil {
             default:break;
         }
         return "";
+    }
+
+    /**
+     * 判断媒体类型
+     * @param s 后缀，文件名，本地地址，网路地址
+     * @return 0 图片，1视频，2音频
+     */
+    public int mediaType(String s){
+        String ext= URIUtil.calculationSuffix(s,"png");
+        for(int i = 0; i< MIMETypeUtil.getInstance().getMusicMiMeType().length; i++){
+            if(ext.equals(MIMETypeUtil.getInstance().getMusicMiMeType()[i][0])) {
+                return 2;
+            }
+        }
+        for(int i=0;i<MIMETypeUtil.getInstance().getVideoMiMeType().length;i++){
+            if(ext.equals(MIMETypeUtil.getInstance().getVideoMiMeType()[i][0])) {
+                return 1;
+            }
+        }
+
+        for(int i=0;i<MIMETypeUtil.getInstance().getImgMiMeType().length;i++){
+            MLog.d(MIMETypeUtil.getInstance().getImgMiMeType().length+"; "+MIMETypeUtil.getInstance().getMusicMiMeType()[i][0]);
+            if(ext.equals(MIMETypeUtil.getInstance().getImgMiMeType()[i][0])) {
+                return 0;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 获取视频MIME_MapTable
+     * @return
+     */
+    public String[][] getVideoMiMeType() {
+        String[][] MIME_MapTable = {
+                //{后缀名，MIME类型}
+                {"3gp", "video/3gpp"},
+                {"asf", "video/x-ms-asf"},
+                {"avi", "video/x-msvideo"},
+                {"m4u", "video/vnd.mpegurl"},
+                {"m4v", "video/x-m4v"},
+                {"mov", "video/quicktime"},
+                {"mp4", "video/mp4"},
+                {"mpe", "video/mpeg"},
+                {"mpeg", "video/mpeg"},
+                {"mpg", "video/mpeg"},
+                {"mpg4", "video/mp4"},
+                {"flv","video/x-flv"},
+                {"mkv","video/x-matroska"},
+                {"rm",""}
+        };
+        return MIME_MapTable;
+    }
+
+    /**
+     * 获取图片MIME_MapTable
+     * "Webp","baiBMP","PCX","EXIF", "FPX","SVG","CDR","PCD","DXF","UFO","EPS", "AI","HDRI","RAW","WMF","FLIC","EMF","ICO"
+     * @return
+     */
+    public String[][] getImgMiMeType() {
+        String[][] MIME_MapTable = {
+                //{后缀名，MIME类型}
+                {"bmp", "image/x-ms-bmp"},
+                {"jpeg", "image/jpeg"},
+                {"jpg", "image/jpeg"},
+                {"gif", "image/gif"},
+                {"png", "image/png"},
+                {"tiff", "image/tiff"},
+                {"tif", "image/tiff"},
+                {"tga", "image/x-targa"},
+                {"psd", "image/vnd.adobe.photoshop"},
+                {"Webp","image/vnd.adobe.photoshop"},
+                {"baiBMP","image/vnd.adobe.photoshop"},
+                {"PCX","image/vnd.adobe.photoshop"},
+                {"EXIF","image/vnd.adobe.photoshop"},
+                {"FPX","image/vnd.adobe.photoshop"},
+                {"SVG","image/vnd.adobe.photoshop"},
+                {"CDR","image/vnd.adobe.photoshop"},
+                {"PCD","image/vnd.adobe.photoshop"},
+                {"DXF","image/vnd.adobe.photoshop"},
+                {"UFO","image/vnd.adobe.photoshop"},
+                {"EPS","image/vnd.adobe.photoshop"},
+                {"AI","image/vnd.adobe.photoshop"},
+                {"RAW","image/vnd.adobe.photoshop"},
+                {"WMF","image/vnd.adobe.photoshop"},
+                {"FLIC","image/vnd.adobe.photoshop"},
+                {"EMF","image/vnd.adobe.photoshop"},
+                {"ICO","image/vnd.adobe.photoshop"}
+        };
+        return MIME_MapTable;
+    }
+
+
+    /**
+     * 获取音频的MIME_MapTable
+     * @return
+     */
+    public String[][] getMusicMiMeType() {
+        String[][] MIME_MapTable = {
+                //{后缀名，MIME类型}
+                {"m3u", "audio/x-mpegurl"},
+                {"m4a", "audio/mp4a-latm"},
+                {"m4b", "audio/mp4a-latm"},
+                {"m4p", "audio/mp4a-latm"},
+                {"mp2", "audio/x-mpeg"},
+                {"mp3", "audio/x-mpeg"},
+                {"mpga", "audio/mpeg"},
+                {"ogg", "audio/ogg"},
+                {"rmvb", "audio/x-pn-realaudio"},
+                {"wav", "audio/x-wav"},
+                {"wma", "audio/x-ms-wma"},
+                {"wmv", "audio/x-ms-wmv"}
+
+        };
+        return MIME_MapTable;
     }
 }

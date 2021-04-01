@@ -15,6 +15,7 @@ import java.util.Date;
 import java.util.Random;
 
 import indi.ayun.original_mvp.OriginalMVP;
+import indi.ayun.original_mvp.preference.OpCredential;
 import indi.ayun.original_mvp.utils.verification.IsNothing;
 
 public class FileLog {
@@ -25,7 +26,7 @@ public class FileLog {
     public static void printFile(String tag, File targetDirectory, @Nullable String fileName, String headString, String msg) {
 
         fileName = (fileName == null) ? getFileName() : fileName;
-        String s=OriginalMVP.getOpCredential().getUserAccount(true);
+        String s= OpCredential.getInstance().getUserAccount(true);
 
         s=s+"=>"+headString+"  "+msg+"  ("+(new Date(System.currentTimeMillis())).toString() +")\n";
         if (save(targetDirectory, fileName, s)) {

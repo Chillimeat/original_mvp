@@ -61,6 +61,11 @@ public class BoxingBottomSheetFragment extends AbsBoxingViewFragment implements 
     }
 
     @Override
+    public boolean onAgainVisible(int num) {
+        return true;
+    }
+
+    @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mEmptyTxt = (TextView) view.findViewById(R.id.empty_txt);

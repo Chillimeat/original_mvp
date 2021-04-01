@@ -44,6 +44,11 @@ public class WebActivity extends BaseActivity implements OnFragmentInteractionLi
     }
 
     @Override
+    public void onAgainCreated(int num) {
+        
+    }
+
+    @Override
     public void onFragmentInteraction(Bundle bundle) {
         if (bundle!=null&&IsNothing.onAnything(bundle.getString("type"))){
             if (bundle.getString("type").equals("close")){

@@ -111,6 +111,11 @@ public class BoxingViewFragment extends AbsBoxingViewFragment implements View.On
     }
 
     @Override
+    public boolean onAgainVisible(int num) {
+        return true;
+    }
+
+    @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         initViews(view);
         super.onViewCreated(view, savedInstanceState);

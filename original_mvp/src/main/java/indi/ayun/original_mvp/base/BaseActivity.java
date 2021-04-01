@@ -12,6 +12,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import indi.ayun.original_mvp.OriginalMVP;
 import indi.ayun.original_mvp.i.OnFragmentInteractionListener;
 import indi.ayun.original_mvp.manager.ActivityMgr;
@@ -19,11 +22,14 @@ import indi.ayun.original_mvp.manager.ComFragmentMgr;
 import indi.ayun.original_mvp.manager.FragmentListenerMgr;
 import indi.ayun.original_mvp.mlog.MLog;
 import indi.ayun.original_mvp.permission.CreatePermission;
+import indi.ayun.original_mvp.utils.verification.IsNothing;
 
-public class BaseActivity extends AppCompatActivity implements OnFragmentInteractionListener {
+public abstract class BaseActivity extends AppCompatActivity implements OnFragmentInteractionListener {
     private CreatePermission createPermission;
     private UtilBase mUtilBase;
-    private boolean isFirst=true;
+
+    private Map<String,Integer> FIRST = new HashMap<>();
+    public String TAG = "BaseActivity";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         MLog.d("生命周期");
@@ -32,7 +38,9 @@ public class BaseActivity extends AppCompatActivity implements OnFragmentInterac
     }
 
     public void setInitContext(){
+        this.TAG = getClass().getName();
         getActivityMgr().addActivity(this);
+        FIRST.put(TAG,1);
         getFragmentListenerMgr().addListener(this,this);
         createPermission= CreatePermission.with(this);
         mUtilBase=new UtilBase();
@@ -58,9 +66,40 @@ public class BaseActivity extends AppCompatActivity implements OnFragmentInterac
     @Override
     protected void onResume() {
         MLog.d("生命周期");
-        isFirst=false;
         super.onResume();
+        if (IsNothing.onAnything(FIRST.get(TAG))&&FIRST.get(TAG)>1){
+            int num=FIRST.get(TAG);
+            FIRST.put(TAG,num+1);
+            onAgainCreated(FIRST.get(TAG));
+        }else {
+            int num=FIRST.get(TAG);
+            FIRST.put(TAG,num+1);
+        }
     }
+    @Override
+    protected void onPause() {
+        MLog.d("生命周期");
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        MLog.d("生命周期");
+        super.onStop();
+        FIRST.remove(TAG);
+    }
+
+    @Override
+    protected void onDestroy() {
+        MLog.d("生命周期");
+        super.onDestroy();
+        if (IsNothing.onAnything(FIRST.get(TAG))) {
+            FIRST.remove(TAG);
+        }
+        getActivityMgr().removeActivity(this);
+        getFragmentListenerMgr().removeListener(this);
+    }
+    public abstract void onAgainCreated(int num);
 
     //runinggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
 
@@ -170,36 +209,9 @@ public class BaseActivity extends AppCompatActivity implements OnFragmentInterac
         }
     }
 
-    public boolean isFirst() {
-        return isFirst;
-    }
-
     //--------------------------------------------------------------------------------------------------------------------功能
     public CreatePermission createPermission(String... permission){
         return createPermission.checkPermission(permission);
     }
-
-    //runinggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
-
-    @Override
-    protected void onPause() {
-        MLog.d("生命周期");
-        super.onPause();
-    }
-
-    @Override
-    protected void onStop() {
-        MLog.d("生命周期");
-        super.onStop();
-    }
-
-    @Override
-    protected void onDestroy() {
-        MLog.d("生命周期");
-        super.onDestroy();
-        getActivityMgr().removeActivity(this);
-        getFragmentListenerMgr().removeListener(this);
-    }
-
 
 }

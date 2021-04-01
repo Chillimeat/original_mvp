@@ -7,6 +7,7 @@ import java.util.Map;
 
 import indi.ayun.original_mvp.OriginalMVP;
 import indi.ayun.original_mvp.mlog.MLog;
+import indi.ayun.original_mvp.preference.OpCredential;
 import okhttp3.FormBody;
 import okhttp3.Interceptor;
 import okhttp3.Request;
@@ -56,7 +57,7 @@ public class RequestParamInterceptor implements Interceptor {
             MLog.d("RequestParamInterceptor_ApiAuth:"+headers.get("ApiAuth"));
            //builder.addHeader("ApiAuth", headers.get("ApiAuth"));
 //            FIXME:这里的问题是，不能获取即时更新的headers
-            builder.addHeader("ApiAuth", OriginalMVP.getOpCredential().getUserToken());
+            builder.addHeader("ApiAuth", OpCredential.getInstance().getUserToken());
         }
         return chain.proceed(builder.build());
     }
