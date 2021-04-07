@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 import java.util.HashMap;
 import java.util.Map;
 
+import indi.ayun.original_mvp.OriginalMVP;
 import indi.ayun.original_mvp.base.BaseComFragment;
 import indi.ayun.original_mvp.i.OnFragmentInteractionListener;
 import indi.ayun.original_mvp.mlog.MLog;
@@ -87,8 +88,19 @@ public class ComFragmentMgr{
         return getInstance();
     }
 
+
     public OnFragmentInteractionListener getListener() {
         return mListener;
+    }
+    public FragmentListenerMgr getFragmentListenerMgr(){
+        return OriginalMVP.fragmentListenerMgr;
+    }
+
+    /**
+     * 获取监听
+     */
+    public OnFragmentInteractionListener getListener(Class tClass) {
+        return getFragmentListenerMgr().getListener(tClass);
     }
 
     public FragmentManager getFM() {

@@ -46,7 +46,7 @@ public class SplashActivityUI {
 
     //state
     private boolean init=false;
-    private static boolean isSkipMust=true;
+    private static boolean isSkipMust=true,isSkipOO=true;
 
     /**
      * 初始化UI
@@ -74,8 +74,8 @@ public class SplashActivityUI {
     public SplashHelper getSplashHelper() {
         if (splashHelper==null){
             splashHelper = new SplashHelper(mContext);
-            splashHelper.setAppFile();
-            splashHelper.firstBasePermission();
+//            splashHelper.setAppFile();
+//            splashHelper.firstBasePermission();
         }
         return splashHelper;
     }
@@ -101,12 +101,13 @@ public class SplashActivityUI {
      * @param activity
      */
     public void onSkipNow(final Class<? extends Activity> activity,boolean isMust,boolean isSkip){
-        if (isMust&&isSkipMust){
+
+        if (isMust&&isSkipMust&&isSkipOO){
             isSkipMust=false;
             TimerTask task = new TimerTask() {
                 @Override
                 public void run() {
-                    IntentSkipUtil.skipFinish(mContext,activity);
+                    IntentSkipUtil.skipFinish(mContext, activity);
                 }
             };
             Timer timer = new Timer();
@@ -115,14 +116,18 @@ public class SplashActivityUI {
         if (!isSkip){
             return;
         }
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                IntentSkipUtil.skipFinish(mContext,activity);
-            }
-        };
-        Timer timer = new Timer();
-        timer.schedule(task, 1500);
+        //must没有执行，并且正常的只执行一次
+        if (isSkipOO&&isSkipMust) {
+            isSkipOO=false;
+            TimerTask task = new TimerTask() {
+                @Override
+                public void run() {
+                    IntentSkipUtil.skipFinish(mContext, activity);
+                }
+            };
+            Timer timer = new Timer();
+            timer.schedule(task, 1500);
+        }
     }
 
 

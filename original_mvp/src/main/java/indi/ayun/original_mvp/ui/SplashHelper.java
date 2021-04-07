@@ -104,10 +104,10 @@ public class SplashHelper {
         MPermission.with(mContext)
                 .setRequestCode(ConstantConfig.PERMISSION_SPLASH)
                 .permissions(
-                        Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS,
                         Manifest.permission.READ_EXTERNAL_STORAGE,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        Manifest.permission.READ_PHONE_STATE
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                        //Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS,
+                        //Manifest.permission.READ_PHONE_STATE//
                         // ……
                 )
                 .request();
