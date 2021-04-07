@@ -149,7 +149,7 @@ public abstract class BaseFragment extends Fragment  implements OnFragmentIntera
         MLog.d("生命周期");
         super.onResume();
         if (IsNothing.onAnything(FIRST.get(TAG))&&FIRST.get(TAG)>1) {
-            if (executeAgain.get(TAG)){//如果是可以执行就执行
+            if (null==executeAgain.get(TAG)||executeAgain.get(TAG)){//如果是可以执行就执行
                 executeAgain.put(TAG,false);
                 int num=FIRST.get(TAG);
                 FIRST.put(TAG,num+1);
@@ -159,6 +159,7 @@ public abstract class BaseFragment extends Fragment  implements OnFragmentIntera
         } else {
             int num=FIRST.get(TAG);
             FIRST.put(TAG,num+1);
+            executeAgain.put(TAG,true);
         }
     }
 
@@ -230,7 +231,7 @@ public abstract class BaseFragment extends Fragment  implements OnFragmentIntera
             //可见
             onVisible();
             if (IsNothing.onAnything(FIRST.get(TAG))&&FIRST.get(TAG)>1) {
-                if (executeAgain.get(TAG)){//如果是可以执行就执行
+                if (null==executeAgain.get(TAG)||executeAgain.get(TAG)){//如果是可以执行就执行
                     executeAgain.put(TAG,false);
                     int num=FIRST.get(TAG);
                     FIRST.put(TAG,num+1);
@@ -240,6 +241,7 @@ public abstract class BaseFragment extends Fragment  implements OnFragmentIntera
             } else {
                 int num=FIRST.get(TAG);
                 FIRST.put(TAG,num+1);
+                executeAgain.put(TAG,true);
             }
         } else {
             //不可见
@@ -268,7 +270,7 @@ public abstract class BaseFragment extends Fragment  implements OnFragmentIntera
             //显示
             onVisible();
             if (IsNothing.onAnything(FIRST.get(TAG))&&FIRST.get(TAG)>1) {
-                if (executeAgain.get(TAG)){//如果是可以执行就执行
+                if (null==executeAgain.get(TAG)||executeAgain.get(TAG)){//如果是可以执行就执行
                     executeAgain.put(TAG,false);
                     int num=FIRST.get(TAG);
                     FIRST.put(TAG,num+1);
@@ -278,6 +280,7 @@ public abstract class BaseFragment extends Fragment  implements OnFragmentIntera
             } else {
                 int num=FIRST.get(TAG);
                 FIRST.put(TAG,num+1);
+                executeAgain.put(TAG,true);
             }
         }
     }

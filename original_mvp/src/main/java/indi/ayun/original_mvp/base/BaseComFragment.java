@@ -8,6 +8,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -171,7 +172,7 @@ public abstract class BaseComFragment extends Fragment  implements OnFragmentInt
             }
         });
         if (IsNothing.onAnything(FIRST.get(TAG))&&FIRST.get(TAG)>1) {
-            if (executeAgain.get(TAG)){//如果是可以执行就执行
+            if (null==executeAgain.get(TAG)||executeAgain.get(TAG)){//如果是可以执行就执行
                 executeAgain.put(TAG,false);
                 int num=FIRST.get(TAG);
                 FIRST.put(TAG,num+1);
@@ -181,6 +182,7 @@ public abstract class BaseComFragment extends Fragment  implements OnFragmentInt
         } else {
             int num=FIRST.get(TAG);
             FIRST.put(TAG,num+1);
+            executeAgain.put(TAG,true);
         }
     }
 
@@ -333,7 +335,7 @@ public abstract class BaseComFragment extends Fragment  implements OnFragmentInt
             //可见
             onVisible();
             if (IsNothing.onAnything(FIRST.get(TAG))&&FIRST.get(TAG)>1) {
-                if (executeAgain.get(TAG)){//如果是可以执行就执行
+                if (null==executeAgain.get(TAG)||executeAgain.get(TAG)){//如果是可以执行就执行
                     executeAgain.put(TAG,false);
                     int num=FIRST.get(TAG);
                     FIRST.put(TAG,num+1);
@@ -343,6 +345,7 @@ public abstract class BaseComFragment extends Fragment  implements OnFragmentInt
             } else {
                 int num=FIRST.get(TAG);
                 FIRST.put(TAG,num+1);
+                executeAgain.put(TAG,true);
             }
         } else {
             //不可见
@@ -371,7 +374,7 @@ public abstract class BaseComFragment extends Fragment  implements OnFragmentInt
             //显示
             onVisible();
             if (IsNothing.onAnything(FIRST.get(TAG))&&FIRST.get(TAG)>1) {
-                if (executeAgain.get(TAG)){//如果是可以执行就执行
+                if (null==executeAgain.get(TAG)||executeAgain.get(TAG)){//如果是可以执行就执行
                     executeAgain.put(TAG,false);
                     int num=FIRST.get(TAG);
                     FIRST.put(TAG,num+1);
@@ -381,6 +384,7 @@ public abstract class BaseComFragment extends Fragment  implements OnFragmentInt
             } else {
                 int num=FIRST.get(TAG);
                 FIRST.put(TAG,num+1);
+                executeAgain.put(TAG,true);
             }
         }
     }

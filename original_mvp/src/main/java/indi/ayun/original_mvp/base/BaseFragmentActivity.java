@@ -186,6 +186,12 @@ public abstract class BaseFragmentActivity extends FragmentActivity implements O
     }
     //------------------------------------------------------------------------------------------------------------------性能与优化
     /**
+     * 键盘优化，防止一打开见面弹出键盘
+     */
+    public void keyboardOptimization(){
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);//防止键盘第一次自动打开
+    }
+    /**
      * 防止快速点击
      * @return 返回true才能点击
      */

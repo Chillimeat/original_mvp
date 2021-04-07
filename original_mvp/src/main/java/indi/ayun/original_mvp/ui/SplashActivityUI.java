@@ -46,6 +46,7 @@ public class SplashActivityUI {
 
     //state
     private boolean init=false;
+    private static boolean isSkipMust=true;
 
     /**
      * 初始化UI
@@ -99,7 +100,18 @@ public class SplashActivityUI {
      * @param isSkip
      * @param activity
      */
-    public void onSkipNow(final Class<? extends Activity> activity,boolean isSkip){
+    public void onSkipNow(final Class<? extends Activity> activity,boolean isMust,boolean isSkip){
+        if (isMust&&isSkipMust){
+            isSkipMust=false;
+            TimerTask task = new TimerTask() {
+                @Override
+                public void run() {
+                    IntentSkipUtil.skipFinish(mContext,activity);
+                }
+            };
+            Timer timer = new Timer();
+            timer.schedule(task, 3000);
+        }
         if (!isSkip){
             return;
         }
