@@ -100,6 +100,8 @@ public abstract class BaseFragment extends Fragment  implements OnFragmentIntera
     public void onInflate(@NonNull Context context, @NonNull AttributeSet attrs, @Nullable Bundle savedInstanceState) {
         MLog.d("生命周期");
         super.onInflate(context, attrs, savedInstanceState);
+        this.TAG = getClass().getName();
+        fragment=this;
     }
 
     /**
@@ -147,6 +149,7 @@ public abstract class BaseFragment extends Fragment  implements OnFragmentIntera
     @Override
     public void onResume() {
         MLog.d("生命周期");
+        this.TAG = getClass().getName();
         super.onResume();
         if (IsNothing.onAnything(FIRST.get(TAG))&&FIRST.get(TAG)>1) {
             if (null==executeAgain.get(TAG)||executeAgain.get(TAG)){//如果是可以执行就执行
@@ -216,6 +219,11 @@ public abstract class BaseFragment extends Fragment  implements OnFragmentIntera
      * 执行完了就返回
      */
     public abstract boolean onAgainVisible(int num);
+
+    public void setInitContext(){
+        this.TAG = getClass().getName();
+        fragment=this;
+    }
     //runinggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
 
     //----------------------------------------------------------------------------------------------可见

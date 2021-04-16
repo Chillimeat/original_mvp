@@ -32,10 +32,10 @@ public class HttpADD {
                     }
                 }
             }
-            return null;
+            return "";
         } catch (SocketException ex) {
             ex.printStackTrace();
-            return null;
+            return "";
         }
     }
 
@@ -48,7 +48,7 @@ public class HttpADD {
      * @return Proxy地址
      */
     public static String getProxy(Context context) {
-        String proxy = null;
+        String proxy = "";
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivityManager != null) {
             NetworkInfo networkinfo = connectivityManager.getActiveNetworkInfo();

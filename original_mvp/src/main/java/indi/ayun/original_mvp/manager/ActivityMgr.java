@@ -3,7 +3,9 @@ package indi.ayun.original_mvp.manager;
 import android.app.Activity;
 
 import java.lang.ref.WeakReference;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Stack;
 
 import indi.ayun.original_mvp.mlog.MLog;
@@ -16,6 +18,11 @@ public class ActivityMgr {
     
     //存储ActivityStack
     private static Stack<WeakReference<Activity>> activityStack = new Stack<>();
+    private Map<String,Integer> FIRST = new HashMap<>();
+
+    public Map<String, Integer> getFIRST() {
+        return FIRST;
+    }
 
     //单例模式
     private static ActivityMgr instance;

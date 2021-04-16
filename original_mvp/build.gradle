@@ -1,4 +1,5 @@
 apply plugin:'com.android.library'
+//这两行上传github的时候必须加
 apply plugin:'com.github.dcendents.android-maven'
 group 'com.github.ayunmingming'
 

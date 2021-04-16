@@ -28,19 +28,18 @@ public abstract class BaseActivity extends AppCompatActivity implements OnFragme
     private CreatePermission createPermission;
     private UtilBase mUtilBase;
 
-    private Map<String,Integer> FIRST = new HashMap<>();
     public String TAG = "BaseActivity";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         MLog.d("生命周期");
         super.onCreate(savedInstanceState);
         setInitContext();
+        getActivityMgr().getFIRST().put(TAG,1);
     }
 
     public void setInitContext(){
         this.TAG = getClass().getName();
         getActivityMgr().addActivity(this);
-        FIRST.put(TAG,1);
         getFragmentListenerMgr().addListener(this,this);
         createPermission= CreatePermission.with(this);
         mUtilBase=new UtilBase();
@@ -67,13 +66,13 @@ public abstract class BaseActivity extends AppCompatActivity implements OnFragme
     protected void onResume() {
         MLog.d("生命周期");
         super.onResume();
-        if (IsNothing.onAnything(FIRST.get(TAG))&&FIRST.get(TAG)>1){
-            int num=FIRST.get(TAG);
-            FIRST.put(TAG,num+1);
-            onAgainCreated(FIRST.get(TAG));
+        if (getActivityMgr().getFIRST().get(TAG)>1){
+            int num=getActivityMgr().getFIRST().get(TAG);
+            getActivityMgr().getFIRST().put(TAG,num+1);
+            onAgainCreated(getActivityMgr().getFIRST().get(TAG));
         }else {
-            int num=FIRST.get(TAG);
-            FIRST.put(TAG,num+1);
+            int num=getActivityMgr().getFIRST().get(TAG);
+            getActivityMgr().getFIRST().put(TAG,num+1);
         }
     }
     @Override
@@ -86,16 +85,13 @@ public abstract class BaseActivity extends AppCompatActivity implements OnFragme
     protected void onStop() {
         MLog.d("生命周期");
         super.onStop();
-        FIRST.remove(TAG);
     }
 
     @Override
     protected void onDestroy() {
         MLog.d("生命周期");
         super.onDestroy();
-        if (IsNothing.onAnything(FIRST.get(TAG))) {
-            FIRST.remove(TAG);
-        }
+        getActivityMgr().getFIRST().remove(TAG);
         getActivityMgr().removeActivity(this);
         getFragmentListenerMgr().removeListener(this);
     }
